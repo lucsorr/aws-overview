@@ -2,121 +2,123 @@
 
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
-- [Module 1: Introduction to AWS Services](#module-1-introduction-to-aws-services)
-   * [1.1 What is AWS](#11-what-is-aws)
-   * [1.2 The client-server model](#12-the-client-server-model)
-   * [1.3 Cloud computing](#13-cloud-computing)
-   * [1.4 Deployment models for cloud computing](#14-deployment-models-for-cloud-computing)
-      + [Cloud-based** ](#cloud-based)
-      + [**On-premises**](#on-premises)
-      + [**Hybrid**](#hybrid)
-   * [1.5 Benefits of cloud computing](#15-benefits-of-cloud-computing)
-      + [No upfront payments:](#no-upfront-payments)
-      + [No maintenance costs: ](#no-maintenance-costs)
-      + [No capacity predictions](#no-capacity-predictions)
-      + [Open to economies of sale: ](#open-to-economies-of-sale)
-      + [More speed and agility](#more-speed-and-agility)
-      + [Fast deployment](#fast-deployment)
-- [Module 2: Cloud computing](#module-2-cloud-computing)
-   * [2.1 Elastic Compute Cloud (EC2)](#21-elastic-compute-cloud-ec2)
-      + [Traditional on-premises resources vs. cloud EC2 instances (and similar)](#traditional-on-premises-resources-vs-cloud-ec2-instances-and-similar)
-         - [Traditional](#traditional)
-         - [EC2](#ec2)
-      + [Basic Use:](#basic-use)
-   * [2.2 EC2 Instance Types](#22-ec2-instance-types)
-      + [General purpose instances](#general-purpose-instances)
-      + [Compute optimized instances](#compute-optimized-instances)
-      + [Memory optimized instances](#memory-optimized-instances)
-      + [Accelerated computing instances](#accelerated-computing-instances)
-      + [Storage optimized instances](#storage-optimized-instances)
-   * [2.3 Billing options for EC2](#23-billing-options-for-ec2)
-      + [On-Demand](#on-demand)
-      + [Reserved Instances](#reserved-instances)
-         - [Standard Reserved Instances: ](#standard-reserved-instances)
-      + [Convertible Reserved Instances: ](#convertible-reserved-instances)
-      + [EC2 Instance Savings Plans](#ec2-instance-savings-plans)
-      + [Spot Instances](#spot-instances)
-      + [Dedicated Hosts](#dedicated-hosts)
-   * [2.4 EC2 Auto Scaling](#24-ec2-auto-scaling)
-      + [Configuration](#configuration)
-   * [2.5 Elastic Load Balancing (ELB)](#25-elastic-load-balancing-elb)
-   * [2.6 Monolithic vs. Microservices Architectures](#26-monolithic-vs-microservices-architectures)
-   * [2.7 Simple Notification Service (SNS) and Simple Queue Service (SQS)](#27-simple-notification-service-sns-and-simple-queue-service-sqs)
-      + [SQS](#sqs)
-      + [SNS](#sns)
-   * [2.8 Additional AWS compute options](#28-additional-aws-compute-options)
-      + [AWS Lambda](#aws-lambda)
-         - [Basic use:](#basic-use-1)
-      + [Elastic Container Service (ECS)](#elastic-container-service-ecs)
-      + [Elastic Kubernetes Service (EKS)](#elastic-kubernetes-service-eks)
-      + [Fargate](#fargate)
-- [Module 3: Global Infrastructure and Reliability](#module-3-global-infrastructure-and-reliability)
-   * [3.1 AWS Global Infrastructure](#31-aws-global-infrastructure)
-      + [Regions](#regions)
-         - [How to choose a Region](#how-to-choose-a-region)
-   * [3.2 Availability Zones](#32-availability-zones)
-   * [3.3 CloudFront and edge locations](#33-cloudfront-and-edge-locations)
-   * [3.4 Methods for provisioning AWS services](#34-methods-for-provisioning-aws-services)
-      + [Management Console (browser-based UI)](#management-console-browser-based-ui)
-      + [AWS Command Line Interface](#aws-command-line-interface)
-      + [Software Development Kits](#software-development-kits)
-   * [3.5 Other managed AWS tools](#35-other-managed-aws-tools)
-      + [Elastic Beanstalk](#elastic-beanstalk)
-      + [CloudFormation](#cloudformation)
-- [Module 4: Networking](#module-4-networking)
-   * [4.1 AWS Connectivity and Networking](#41-aws-connectivity-and-networking)
-      + [Public vs. private](#public-vs-private)
-   * [4.2 Virtual Private Cloud (VPC)](#42-virtual-private-cloud-vpc)
-   * [4.3 Internet Gateway and Virtual Private Gateway (VPG)](#43-internet-gateway-and-virtual-private-gateway-vpg)
-      + [Internet Gateway](#internet-gateway)
-      + [Virtual Private Gateway (VPG)](#virtual-private-gateway-vpg)
-   * [4.4 Direct Connect](#44-direct-connect)
-   * [4.5 Subnets and Network Access Control Lists (ACLs)](#45-subnets-and-network-access-control-lists-acls)
-   * [4.6 Access Control Lists and Security Groups](#46-access-control-lists-and-security-groups)
-      + [Access Control Lists (ACLs)](#access-control-lists-acls)
-      + [Security Groups](#security-groups)
-   * [4.8 Global Networking: Domain Name System (DNS) and Route 53](#48-global-networking-domain-name-system-dns-and-route-53)
-      + [Domain Name System](#domain-name-system)
-      + [Route 53](#route-53)
-- [Module 5](#module-5)
-- [5.0 Terminology: Block-level vs. object storage models.](#50-terminology-block-level-vs-object-storage-models)
-   * [Block-level storage ](#block-level-storage)
-   * [Object storage](#object-storage)
-   * [File storage](#file-storage)
-   * [Comparison](#comparison)
-- [5.1 EC2 Instance Stores](#51-ec2-instance-stores)
-   * [When are useful:](#when-are-useful)
-- [5.2 Elastic Block Store (EBS)](#52-elastic-block-store-ebs)
-   * [When are useful:](#when-are-useful-1)
-   * [Snapshots](#snapshots)
-- [5.3 Simple Storage Service (S3). EBS vs. S3](#53-simple-storage-service-s3-ebs-vs-s3)
-   * [S3 Tiers](#s3-tiers)
-      + [S3 Standard](#s3-standard)
-      + [S3 Standard-Infrequent Access (S3 Standard-IA)](#s3-standard-infrequent-access-s3-standard-ia)
-      + [S3 One Zone-Infrequent Access (S3 One Zone-IA)](#s3-one-zone-infrequent-access-s3-one-zone-ia)
-      + [S3 Intelligent-Tiering](#s3-intelligent-tiering)
-      + [The Glacier tiers:](#the-glacier-tiers)
-      + [S3 Glacier Instant Retrieval](#s3-glacier-instant-retrieval)
-      + [S3 Glacier Flexible Retrieval](#s3-glacier-flexible-retrieval)
-      + [S3 Glacier Deep Archive](#s3-glacier-deep-archive)
-      + [S3 Outposts](#s3-outposts)
-   * [EBS vs. S3](#ebs-vs-s3)
-- [5.4 Elastic File System (EFS). EBS vs. EFS](#54-elastic-file-system-efs-ebs-vs-efs)
-   * [EBS vs. EFS](#ebs-vs-efs)
-- [5.5 Relational Database Service (RDS). Aurora](#55-relational-database-service-rds-aurora)
-   * [RDS](#rds)
-      + [Engines](#engines)
-   * [Aurora](#aurora)
-- [5.6 DynamoDB: AWS's non-relational database](#56-dynamodb-awss-non-relational-database)
-   * [DynamoDB](#dynamodb)
-      + [Some benefits](#some-benefits)
-   * [Relational vs. non-relational](#relational-vs-non-relational)
-- [5.7 Redshift](#57-redshift)
-- [5.8 Database Migration Service (DMS)](#58-database-migration-service-dms)
-   * [Use cases for DMS](#use-cases-for-dms)
-- [5.9 Additional database services](#59-additional-database-services)
+- [AWS Overview](#aws-overview)
+   * [Module 1: Introduction to AWS Services](#module-1-introduction-to-aws-services)
+      + [1.1 What is AWS](#11-what-is-aws)
+      + [1.2 The client-server model](#12-the-client-server-model)
+      + [1.3 Cloud computing](#13-cloud-computing)
+      + [1.4 Deployment models for cloud computing](#14-deployment-models-for-cloud-computing)
+         - [Cloud-based** ](#cloud-based)
+         - [**On-premises**](#on-premises)
+         - [**Hybrid**](#hybrid)
+      + [1.5 Benefits of cloud computing](#15-benefits-of-cloud-computing)
+         - [No upfront payments:](#no-upfront-payments)
+         - [No maintenance costs: ](#no-maintenance-costs)
+         - [No capacity predictions](#no-capacity-predictions)
+         - [Open to economies of sale: ](#open-to-economies-of-sale)
+         - [More speed and agility](#more-speed-and-agility)
+         - [Fast deployment](#fast-deployment)
+   * [Module 2: Cloud computing](#module-2-cloud-computing)
+      + [2.1 Elastic Compute Cloud (EC2)](#21-elastic-compute-cloud-ec2)
+         - [Traditional on-premises resources vs. cloud EC2 instances (and similar)](#traditional-on-premises-resources-vs-cloud-ec2-instances-and-similar)
+            * [Traditional](#traditional)
+            * [EC2](#ec2)
+         - [Basic Use:](#basic-use)
+      + [2.2 EC2 Instance Types](#22-ec2-instance-types)
+         - [General purpose instances](#general-purpose-instances)
+         - [Compute optimized instances](#compute-optimized-instances)
+         - [Memory optimized instances](#memory-optimized-instances)
+         - [Accelerated computing instances](#accelerated-computing-instances)
+         - [Storage optimized instances](#storage-optimized-instances)
+      + [2.3 Billing options for EC2](#23-billing-options-for-ec2)
+         - [On-Demand](#on-demand)
+         - [Reserved Instances](#reserved-instances)
+            * [Standard Reserved Instances: ](#standard-reserved-instances)
+         - [Convertible Reserved Instances: ](#convertible-reserved-instances)
+         - [EC2 Instance Savings Plans](#ec2-instance-savings-plans)
+         - [Spot Instances](#spot-instances)
+         - [Dedicated Hosts](#dedicated-hosts)
+      + [2.4 EC2 Auto Scaling](#24-ec2-auto-scaling)
+         - [Configuration](#configuration)
+      + [2.5 Elastic Load Balancing (ELB)](#25-elastic-load-balancing-elb)
+      + [2.6 Monolithic vs. Microservices Architectures](#26-monolithic-vs-microservices-architectures)
+      + [2.7 Simple Notification Service (SNS) and Simple Queue Service (SQS)](#27-simple-notification-service-sns-and-simple-queue-service-sqs)
+         - [SQS](#sqs)
+         - [SNS](#sns)
+      + [2.8 Additional AWS compute options](#28-additional-aws-compute-options)
+         - [AWS Lambda](#aws-lambda)
+            * [Basic use:](#basic-use-1)
+         - [Elastic Container Service (ECS)](#elastic-container-service-ecs)
+         - [Elastic Kubernetes Service (EKS)](#elastic-kubernetes-service-eks)
+         - [Fargate](#fargate)
+   * [Module 3: Global Infrastructure and Reliability](#module-3-global-infrastructure-and-reliability)
+      + [3.1 AWS Global Infrastructure](#31-aws-global-infrastructure)
+         - [Regions](#regions)
+            * [How to choose a Region](#how-to-choose-a-region)
+      + [3.2 Availability Zones](#32-availability-zones)
+      + [3.3 CloudFront and edge locations](#33-cloudfront-and-edge-locations)
+      + [3.4 Methods for provisioning AWS services](#34-methods-for-provisioning-aws-services)
+         - [Management Console (browser-based UI)](#management-console-browser-based-ui)
+         - [AWS Command Line Interface](#aws-command-line-interface)
+         - [Software Development Kits](#software-development-kits)
+      + [3.5 Other managed AWS tools](#35-other-managed-aws-tools)
+         - [Elastic Beanstalk](#elastic-beanstalk)
+         - [CloudFormation](#cloudformation)
+   * [Module 4: Networking](#module-4-networking)
+      + [4.1 AWS Connectivity and Networking](#41-aws-connectivity-and-networking)
+         - [Public vs. private](#public-vs-private)
+      + [4.2 Virtual Private Cloud (VPC)](#42-virtual-private-cloud-vpc)
+      + [4.3 Internet Gateway and Virtual Private Gateway (VPG)](#43-internet-gateway-and-virtual-private-gateway-vpg)
+         - [Internet Gateway](#internet-gateway)
+         - [Virtual Private Gateway (VPG)](#virtual-private-gateway-vpg)
+      + [4.4 Direct Connect](#44-direct-connect)
+      + [4.5 Subnets and Network Access Control Lists (ACLs)](#45-subnets-and-network-access-control-lists-acls)
+      + [4.6 Access Control Lists and Security Groups](#46-access-control-lists-and-security-groups)
+         - [Access Control Lists (ACLs)](#access-control-lists-acls)
+         - [Security Groups](#security-groups)
+      + [4.8 Global Networking: Domain Name System (DNS) and Route 53](#48-global-networking-domain-name-system-dns-and-route-53)
+         - [Domain Name System](#domain-name-system)
+         - [Route 53](#route-53)
+   * [Module 5](#module-5)
+      + [5.0 Terminology: Block-level vs. object storage models.](#50-terminology-block-level-vs-object-storage-models)
+         - [Block-level storage ](#block-level-storage)
+         - [Object storage](#object-storage)
+         - [File storage](#file-storage)
+         - [Comparison](#comparison)
+      + [5.1 EC2 Instance Stores](#51-ec2-instance-stores)
+         - [When are useful:](#when-are-useful)
+      + [5.2 Elastic Block Store (EBS)](#52-elastic-block-store-ebs)
+         - [When are useful:](#when-are-useful-1)
+         - [Snapshots](#snapshots)
+      + [5.3 Simple Storage Service (S3). EBS vs. S3](#53-simple-storage-service-s3-ebs-vs-s3)
+         - [S3 Tiers](#s3-tiers)
+            * [S3 Standard](#s3-standard)
+            * [S3 Standard-Infrequent Access (S3 Standard-IA)](#s3-standard-infrequent-access-s3-standard-ia)
+            * [S3 One Zone-Infrequent Access (S3 One Zone-IA)](#s3-one-zone-infrequent-access-s3-one-zone-ia)
+            * [S3 Intelligent-Tiering](#s3-intelligent-tiering)
+            * [The Glacier tiers:](#the-glacier-tiers)
+            * [S3 Glacier Instant Retrieval](#s3-glacier-instant-retrieval)
+            * [S3 Glacier Flexible Retrieval](#s3-glacier-flexible-retrieval)
+            * [S3 Glacier Deep Archive](#s3-glacier-deep-archive)
+            * [S3 Outposts](#s3-outposts)
+         - [EBS vs. S3](#ebs-vs-s3)
+      + [5.4 Elastic File System (EFS). EBS vs. EFS](#54-elastic-file-system-efs-ebs-vs-efs)
+         - [EBS vs. EFS](#ebs-vs-efs)
+      + [5.5 Relational Database Service (RDS). Aurora](#55-relational-database-service-rds-aurora)
+         - [RDS](#rds)
+            * [Engines](#engines)
+         - [Aurora](#aurora)
+      + [5.6 DynamoDB: AWS's non-relational database](#56-dynamodb-awss-non-relational-database)
+         - [DynamoDB](#dynamodb)
+            * [Some benefits](#some-benefits)
+         - [Relational vs. non-relational](#relational-vs-non-relational)
+      + [5.7 Redshift](#57-redshift)
+         - [5.8 Database Migration Service (DMS)](#58-database-migration-service-dms)
+         - [Use cases for DMS](#use-cases-for-dms)
+         - [5.9 Additional database services](#59-additional-database-services)
 
 <!-- TOC end -->
+
 
 ## Module 1: Introduction to AWS Services
 
@@ -791,15 +793,15 @@ Route 53 connects user requests to infrastructure running in AWS (such as Amazon
 8. Database Migration Service (DMS)
 9. Additional database services
 
-## 5.0 Terminology: Block-level vs. object storage models.
+### 5.0 Terminology: Block-level vs. object storage models.
 
-### Block-level storage 
+#### Block-level storage 
 
 This is a type of storage architecture where data is organized and accessed in fixed-sized blocks. Unlike file-level storage, which deals with entire files, block-level storage allows for more granular control over data and is commonly used in storage area networks (SANs). Each block functions as an individual, addressable unit that can be independently managed, making it suitable for tasks such as virtualization, databases, and raw storage for applications requiring direct access to storage blocks.
 
 I practice this means that, hen a file is updated, the whole series of blocks aren't all overwritten. Instead, it updates just the pieces that change. This makes it an efficient storage type when working with applications like databases, enterprise software, or file systems. 
 
-### Object storage
+#### Object storage
 
 In object storage, each object consists of data, metadata, and a key.
 
@@ -807,11 +809,11 @@ The data might be an image, video, text document, or any other type of file. Met
 
 Recall that when you modify a file in block storage, only the pieces that are changed are updated. When a file in object storage is modified, the entire object is updated.
 
-### File storage
+#### File storage
 
 In file storage, multiple clients (such as users, applications, servers, and so on) can access data that is stored in shared file folders. In this approach, a storage server uses block storage with a local file system to organize files. Clients access data through file paths.
 
-### Comparison
+#### Comparison
 
 - **Object storage** treats any file as a complete, discreet object. This is great for documents, and images, and video files that get uploaded and consumed as entire objects, but every time there's a change to the object, you must re-upload the entire file. There are no **delta updates**. 
 
@@ -821,17 +823,17 @@ In file storage, multiple clients (such as users, applications, servers, and so 
 
 - Compared to block storage and object storage, **file storage** is ideal for use cases in which a large number of services and resources need to access the same data at the same time.
 
-## 5.1 EC2 Instance Stores
+### 5.1 EC2 Instance Stores
 
 An instance store provides temporary block-level storage for an Amazon EC2 instance. 
 
 An instance store is disk storage that is physically attached to the host computer for an EC2 instance, and therefore has the same lifespan as the instance. When the instance is terminated, you lose any data in the instance store.
 
-### When are useful:
+#### When are useful:
 
 Because of the ephemeral or temporary nature of instance store volumes, they are useful in situations where you can lose the data being written to the drive. Such as temporary files, scratch data, and data that can be easily recreated without consequence.
 
-## 5.2 Elastic Block Store (EBS)
+### 5.2 Elastic Block Store (EBS)
 
 Elastic Block Store (Amazon EBS) is a service that provides block-level storage volumes that you can use with Amazon EC2 instances. They are virtual hard drives; these are separate drives from the local instance store volumes, and they aren't tied directly to the host that you're EC2 is running on: if you stop or terminate an Amazon EC2 instance, all the data on the attached EBS volume remains available.
 
@@ -839,13 +841,13 @@ To create an EBS volume you define the configuration (such as volume size and ty
 
 They are an Availability Zone-level resource.
 
-### When are useful:
+#### When are useful:
 
 When you need a place to write data that **persists** outside the life cycle of an EC2 instance. 
 
 Because EBS volumes are for data that needs to persist, it’s important to back up the data. You can take incremental backups of EBS volumes by creating **EBS snapshots**.
 
-### Snapshots
+#### Snapshots
 
 Incremental backups of EBS volumes with Amazon EBS snapshots. On Day 1, two volumes are backed up. Day 2 adds one new volume and the new volume is backed up. Day 3 adds two more volumes for a total of five volumes. Only the two new volumes are backed up.
 
@@ -853,7 +855,7 @@ An EBS snapshot is an **incremental backup**. This means that the first backup t
 
 Incremental backups are different from full backups, in which all the data in a storage volume copies each time a backup occurs. _The full backup includes data that has not changed since the most recent backup_.
 
-## 5.3 Simple Storage Service (S3). EBS vs. S3
+### 5.3 Simple Storage Service (S3). EBS vs. S3
 
 > **Should have been called**: Amazon Unlimited FTP Server
 >
@@ -869,14 +871,14 @@ You can create multiple buckets and store them across different classes or **tie
 
 These tiers offer mechanisms for different storage use cases, such as data that needs to be accessed frequently compared to, audit data that needs to be retained for several years.
 
-### S3 Tiers
+#### S3 Tiers
 
 When selecting an Amazon S3 storage class, we have to consider these two factors:
 
 - **How often** you plan to retrieve your data
 - **How available** you need your data to be
 
-#### S3 Standard
+##### S3 Standard
 
 - Designed for frequently accessed data (high availability for objects)
 - Stores data in a minimum of three Availability Zones
@@ -885,7 +887,7 @@ When selecting an Amazon S3 storage class, we have to consider these two factors
 
 S3 Standard has a higher cost than other storage classes intended for infrequently accessed data and archival storage.
 
-#### S3 Standard-Infrequent Access (S3 Standard-IA)
+##### S3 Standard-Infrequent Access (S3 Standard-IA)
 
 - Ideal for infrequently accessed data
 - Similar to Amazon S3 Standard (same level of availability) but has a lower storage price and higher retrieval price
@@ -893,7 +895,7 @@ S3 Standard has a higher cost than other storage classes intended for infrequent
 - Used for: ideal for data infrequently accessed but requires high availability when needed. Both S3 Standard and S3 Standard-IA store data in a minimum of three Availability Zones. 
 
 
-#### S3 One Zone-Infrequent Access (S3 One Zone-IA)
+##### S3 One Zone-Infrequent Access (S3 One Zone-IA)
 
 - Stores data in a single Availability Zone (S3 Standard and S3 Standard-IA store data in a minimum of three Availability Zones)
 - Has a lower storage price than Amazon S3 Standard-IA
@@ -902,37 +904,37 @@ S3 Standard has a higher cost than other storage classes intended for infrequent
     - You want to save costs on storage.
     - You can easily reproduce your data in the event of an Availability Zone failure.
 
-#### S3 Intelligent-Tiering
+##### S3 Intelligent-Tiering
 
 - Ideal for data with unknown or changing access patterns
 - Requires a small monthly monitoring and automation fee per object
 
 In the S3 Intelligent-Tiering storage class, S3 monitors objects’ access patterns. If you haven’t accessed an object for 30 consecutive days, S3 automatically moves it to the infrequent access tier, S3 Standard-IA. If you access an object in the infrequent access tier, S3 automatically moves it to the frequent access tier, S3 Standard.
 
-#### The Glacier tiers:
+##### The Glacier tiers:
 
 > **Should have been called**: Really slow Amazon S3
 >
 > **Use this to**: Make backups of your backups that you keep on S3. Also, beware the cost of getting data back out in a hurry. For long term archiving.
 
-#### S3 Glacier Instant Retrieval
+##### S3 Glacier Instant Retrieval
 
 - Works well for archived data that requires immediate access (same performance as S3 Standard)
 - Can retrieve objects within a few milliseconds
 
-#### S3 Glacier Flexible Retrieval
+##### S3 Glacier Flexible Retrieval
 
 - Low-cost storage designed for data archiving
 - Able to retrieve objects within a few minutes to hours
 - Used for: For example, you might use this storage class to store archived customer records or older photos and video files. You can retrieve your data from S3 Glacier Flexible Retrieval from 1 minute to 12 hours.
 
-#### S3 Glacier Deep Archive
+##### S3 Glacier Deep Archive
 
 - Lowest-cost object storage class ideal for archiving (long-term retention and digital preservation for data that might be accessed once or twice in a year)
 - Able to retrieve objects within 12 hours (data retrieval from 12 to 48 hours) 
 - All objects from this storage class are replicated and stored across at least three geographically dispersed Availability Zones.
 
-#### S3 Outposts
+##### S3 Outposts
 
 - Creates S3 buckets on Amazon S3 Outposts
 - Makes it easier to retrieve, store, and access data on AWS Outposts
@@ -940,7 +942,7 @@ In the S3 Intelligent-Tiering storage class, S3 monitors objects’ access patte
 
 S3 Outposts delivers object storage to your on-premises AWS Outposts environment. S3 Outposts is designed to store data durably and redundantly across multiple devices and servers on your Outposts. 
 
-### EBS vs. S3
+#### EBS vs. S3
 
 The best choice depends on your individual workload. Each service is the right service for specific needs: 
 
@@ -949,7 +951,7 @@ The best choice depends on your individual workload. Each service is the right s
 - If you are using complete objects or only occasional changes, S3 is the best choice. 
 - If you are doing complex read, write, change functions, often, very often, or constantly, then EBS is the best choice. 
 
-## 5.4 Elastic File System (EFS). EBS vs. EFS
+### 5.4 Elastic File System (EFS). EBS vs. EFS
 
 EFS is a managed file system. It's extremely common for businesses to have shared file systems across their applications.
 
@@ -957,13 +959,13 @@ It is a scalable and fully managed file storage service. It is designed to be us
 
 As you add and remove files, Amazon EFS grows and shrinks automatically.
 
-### EBS vs. EFS
+#### EBS vs. EFS
 
 - **EBS**: An Amazon EBS volume stores data in **a single Availability Zone**. To attach an Amazon EC2 instance to an EBS volume, both the Amazon EC2 instance and the EBS volume must reside within the same Availability Zone.
 
 - **EFS**: Amazon EFS is a **regional service**. It stores data in and across multiple Availability Zones. The duplicate storage enables you to access data concurrently from all the Availability Zones in the Region where a file system is located. Additionally, on-premises servers can access EFS using Direct Connect.
 
-## 5.5 Relational Database Service (RDS). Aurora
+### 5.5 Relational Database Service (RDS). Aurora
 
 In a relational database, data is stored in a way that relates it to other pieces of data. 
 
@@ -971,7 +973,7 @@ An example of a relational database might be the coffee shop’s inventory manag
 
 Relational databases use structured query language (SQL) to store and query data. This approach allows data to be stored in an easily understandable, consistent, and scalable way. 
 
-### RDS
+#### RDS
 
 Amazon Relational Database Service (Amazon RDS) is a service that enables you to run relational databases in the AWS Cloud.
 
@@ -979,7 +981,7 @@ Amazon RDS is a managed service that automates tasks such as hardware provisioni
 
 Amazon RDS provides a number of different security options. Many Amazon RDS database engines offer encryption at rest (protecting data while it is stored) and encryption in transit (protecting data while it is being sent and received).
 
-#### Engines
+##### Engines
 
 Amazon RDS is available on six database engines, which optimize for memory, performance, or input/output (I/O). Supported database engines include:
 
@@ -990,7 +992,7 @@ Amazon RDS is available on six database engines, which optimize for memory, perf
 - Oracle Database
 - Microsoft SQL Server
 
-### Aurora
+#### Aurora
 
 Aurora is an enterprise-class relational database. It is compatible with MySQL and PostgreSQL relational databases. It is up to five times faster than standard MySQL databases and up to three times faster than standard PostgreSQL databases.
 
@@ -998,11 +1000,11 @@ Aurora helps to reduce your database costs by reducing unnecessary input/output 
 
 Consider Aurora if your workloads require high availability. It replicates six copies of your data across three Availability Zones and continuously backs up your data to Amazon S3.
 
-## 5.6 DynamoDB: AWS's non-relational database
+### 5.6 DynamoDB: AWS's non-relational database
 
 >Non-relational databases, also known as NoSQL databases, are a type of database management system that diverges from the traditional relational database model. Unlike relational databases, which use a structured and tabular format with predefined schemas, non-relational databases are designed to handle unstructured, semi-structured, or varied data types. They provide a flexible data model, allowing for scalability and efficient management of large volumes of data with diverse structures. Non-relational databases are commonly used in scenarios where the data requirements are dynamic, and the focus is on horizontal scalability and distributed computing, such as in web applications and big data environments.
 
-### DynamoDB
+#### DynamoDB
 
 > **Should have been called**: Amazon NoSQL
 >
@@ -1014,18 +1016,18 @@ Amazon DynamoDB is a fully managed NoSQL database service; it is designed to pro
 
 DynamoDB supports key-value and document data models, offering flexible schema options. With automatic and on-demand scaling, DynamoDB can handle large amounts of data and traffic, making it suitable for a variety of use cases, including web and mobile applications, gaming, IoT (Internet of Things), and more. It provides features like encryption, backup and restore, and global tables for deploying applications with high availability and fault tolerance across multiple AWS regions.
 
-#### Some benefits
+##### Some benefits
 
 - It is **serverless**, which means that you do not have to provision, patch, or manage servers You also do not have to install, maintain, or operate software.
 - Automatic Scaling: DynamoDB automatically scales to adjust for changes in capacity while maintaining consistent performance. This makes it a suitable choice for use cases that require high performance while scaling.
 
-### Relational vs. non-relational
+#### Relational vs. non-relational
 
 Relational databases have been around since the moment businesses started using computers. Being able to build complex analysis of data spread across multiple tables, is the strength of any relational system. For example, if you have a sales supply chain management system to analyze for weak spots, using RDS is the clear winner here because: it's built for business analytics, because you need complex relational joins. 
 
 The things that make relational databases great, all of that complex functionality, creates overhead and lag and expense if you're not actually using it. This is where non-relational databases, Dynamo DB, delivers the knockout punch. By eliminating all the overhead, DynamoDB allows you to build powerful, incredibly fast databases where you don't need complex joint functionality. 
 
-## 5.7 Redshift
+### 5.7 Redshift
 
 > **Should have been called**: Amazon Data Warehouse
 >
@@ -1035,7 +1037,7 @@ Amazon Redshift is a fully managed, petabyte-scale data warehouse service. It is
 
 It uses a massively parallel processing (MPP) architecture, enabling quick data retrieval and analysis. With features such as automatic backups, encryption, and integration with various data sources, Amazon Redshift is widely used for data warehousing and analytics in cloud-based environments.
 
-## 5.8 Database Migration Service (DMS)
+#### 5.8 Database Migration Service (DMS)
 
 AWS Database Migration Service (AWS DMS) enables you to migrate relational databases, non-relational databases, and other types of data stores.
 
@@ -1043,13 +1045,13 @@ With AWS DMS, you move data between a source database and a target database. The
 
 For example, suppose that you have a MySQL database that is stored on premises in an Amazon EC2 instance or in RDS. Consider the MySQL database to be your source database. Using AWS DMS, you could migrate your data to a target database, such as an Amazon Aurora database.
 
-### Use cases for DMS
+#### Use cases for DMS
 
 - **Development and test database migrations**: Enabling developers to test applications against production data without affecting production users
 - **Database consolidation**: Combining several databases into a single database
 - **Continuous replication**: Sending ongoing copies of your data to other target sources instead of doing a one-time migration
 
-## 5.9 Additional database services
+#### 5.9 Additional database services
 
 - **DocumentDB**: a document database service that supports MongoDB workloads. (MongoDB is a document database program.)
 - **Neptune**: a graph database service. You can use Amazon Neptune to build and run applications that work with highly connected datasets, such as recommendation engines, fraud detection, and knowledge graphs.
@@ -1057,4 +1059,3 @@ For example, suppose that you have a MySQL database that is stored on premises i
 - **Managed Blockchain**:a service that you can use to create and manage blockchain networks with open-source frameworks. Blockchain is a distributed ledger system that lets multiple parties run transactions and share data without a central authority.
 - **ElastiCache**:a service that adds caching layers on top of your databases to help improve the read times of common requests. It supports two types of data stores: Redis and Memcached.
 - **DynamoDB Accelerator**:an in-memory cache for DynamoDB. It helps improve response times from single-digit milliseconds to microseconds.
-
