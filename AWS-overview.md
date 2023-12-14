@@ -116,6 +116,36 @@
          - [5.8 Database Migration Service (DMS)](#58-database-migration-service-dms)
          - [Use cases for DMS](#use-cases-for-dms)
          - [5.9 Additional database services](#59-additional-database-services)
+   * [Model 6: Security](#model-6-security)
+      + [6.1 The shared-responsibility model](#61-the-shared-responsibility-model)
+         - [Customers: Security in the cloud](#customers-security-in-the-cloud)
+         - [AWS: Security of the cloud](#aws-security-of-the-cloud)
+      + [6.2 Identity and Access Management (IAM). Security levels](#62-identity-and-access-management-iam-security-levels)
+         - [Identity and Access Management (IAM)](#identity-and-access-management-iam)
+            * [Multi-factor authentication (MFA)](#multi-factor-authentication-mfa)
+         - [AWS Account root user ('root')](#aws-account-root-user-root)
+         - [IAM Users](#iam-users)
+            * [The least privelege principle](#the-least-privelege-principle)
+         - [IAM policies](#iam-policies)
+            * [Example of a IAM policy](#example-of-a-iam-policy)
+         - [IAM groups](#iam-groups)
+         - [IAM roles](#iam-roles)
+      + [6.3 AWS Organizations](#63-aws-organizations)
+         - [Organizational Units (OUs)](#organizational-units-ous)
+            * [Example of use case for an OU:](#example-of-use-case-for-an-ou)
+      + [6.4 Compliance: Artifact and the Customer Compliance Center](#64-compliance-artifact-and-the-customer-compliance-center)
+         - [Customer Compliance Center](#customer-compliance-center)
+         - [AWS Artifact](#aws-artifact)
+            * [Artifact Agreements](#artifact-agreements)
+            * [AWS Artifact Reports](#aws-artifact-reports)
+      + [6.5 Distributed Denial of Service Attacks (DDoS)](#65-distributed-denial-of-service-attacks-ddos)
+         - [AWS Shield](#aws-shield)
+         - [AWS WAF](#aws-waf)
+      + [6.6 Additional security services](#66-additional-security-services)
+            * [Encryption at rest vs. encryption in transit ](#encryption-at-rest-vs-encryption-in-transit)
+         - [AWS Key Management Service (KMS)](#aws-key-management-service-kms)
+         - [Inspector](#inspector)
+         - [GuardDuty](#guardduty)
 
 <!-- TOC end -->
 
@@ -1059,3 +1089,287 @@ For example, suppose that you have a MySQL database that is stored on premises i
 - **Managed Blockchain**:a service that you can use to create and manage blockchain networks with open-source frameworks. Blockchain is a distributed ledger system that lets multiple parties run transactions and share data without a central authority.
 - **ElastiCache**:a service that adds caching layers on top of your databases to help improve the read times of common requests. It supports two types of data stores: Redis and Memcached.
 - **DynamoDB Accelerator**:an in-memory cache for DynamoDB. It helps improve response times from single-digit milliseconds to microseconds.
+
+## Model 6: Security
+
+1. The shared-responsibility model
+2. Identity and Access Management (IAM). Security levels
+3. AWS Organizations
+4. Compliance: Artifact and the Customer Compliance Center
+5. Distributed Denial of Service Attacks (DDoS)
+6. Additional security services
+
+### 6.1 The shared-responsibility model
+
+![Shared responsibility model](./images/04.png)
+
+The shared responsibility model in AWS delineates the security responsibilities between the cloud service provider (AWS) and the customer. 
+
+AWS is responsible for the **security "of" the cloud** infrastructure, including the hardware, software, and networking, while customers are responsible for the **security "in" the cloud**, encompassing the configuration, management, and protection of their data, applications, and access controls. 
+
+This collaborative model ensures a comprehensive approach to security, with AWS managing the underlying infrastructure, and customers focusing on securing their specific use of AWS services.
+
+>You can think of this model as being similar to the division of responsibilities between a homeowner and a homebuilder. The builder (AWS) is responsible for constructing your house and ensuring that it is solidly built. As the homeowner (the customer), it is your responsibility to secure everything in the house by ensuring that the doors are closed and locked. 
+
+#### Customers: Security in the cloud
+
+When using AWS services, you, the customer, maintain complete control over your content. You are responsible for managing security requirements for your content, including which content you choose to store on AWS, which AWS services you use, and who has access to that content. You also control how access rights are granted, managed, and revoked.
+ 
+The security steps that you take will depend on factors such as the services that you use, the complexity of your systems, and your company’s specific operational and security needs. Steps include selecting, configuring, and patching the operating systems that will run on Amazon EC2 instances, configuring security groups, and managing user accounts. 
+
+#### AWS: Security of the cloud
+ 
+AWS operates, manages, and controls the components at all layers of infrastructure. This includes areas such as the host operating system, the virtualization layer, and even the physical security of the data centers from which services operate. 
+ 
+AWS is responsible for protecting the global infrastructure that runs all of the services offered in the AWS Cloud. This infrastructure includes AWS Regions, Availability Zones, and edge locations.
+
+AWS manages the security of the cloud, specifically the physical infrastructure that hosts your resources, which include:
+
+- Physical security of data centers
+- Hardware and software infrastructure
+- Network infrastructure
+- Virtualization infrastructure
+
+Although you cannot visit AWS data centers to see this protection firsthand, AWS provides several reports from third-party auditors. These auditors have verified its compliance with a variety of computer security standards and regulations.
+
+### 6.2 Identity and Access Management (IAM). Security levels
+
+#### Identity and Access Management (IAM)
+
+> **Should have been called**: Users, Keys and Certs
+>
+> **Use this to**: Set up additional users, set up new AWS Keys and policies.
+
+AWS Identity and Access Management (IAM) enables you to manage access to AWS services and resources securely.
+
+IAM gives you the flexibility to configure access based on your company’s specific operational and security needs. You do this by using a combination of IAM features:
+
+- IAM users, groups, and roles
+- IAM policies
+- Multi-factor authentication (MFA)
+
+
+
+##### Multi-factor authentication (MFA)
+
+Multi-factor authentication (MFA) is a security method that requires users to provide two or more authentication factors to access a system, application, or account. These factors typically include something the user knows (like a password), something the user has (such as a smartphone or security token), and sometimes something the user is (like a fingerprint or facial recognition). MFA enhances security by adding an extra layer of verification
+
+#### AWS Account root user ('root')
+
+When you first create an AWS account, you begin with an identity known as the **root** user. The root user is accessed by signing in with the email address and password that you used to create your AWS account. It has complete access to all the AWS services and resources in the account: you can spin up databases, EC2 instances, blockchain services, etc. 
+
+You don't want to use the root user for everything: You control access in **a granular way** by using the AWS service, AWS Identity and Access Management, or IAM. 
+
+>**Best practice**: Because that user is so powerful, we recommend that as soon as you create an AWS account and log in with your root user, you **turn on multi-factor authentication**, or MFA.
+
+>**Best practice**: Do **NOT** use the root user for everyday tasks. Instead, use the root user to create your first IAM user and assign it permissions to create other users.
+
+Then, continue to create other IAM users, and access those identities for performing regular tasks throughout AWS. Only use the root user when you need to perform a limited number of tasks that are only available to the root user. Examples of these tasks include changing your root user email address and changing your AWS support plan. For more information, see “Tasks that require root user credentials” in the AWS Account Management Reference Guide.
+
+#### IAM Users
+
+An IAM user is an identity that you create in AWS. It represents the person or application that interacts with AWS services and resources. It consists of a name and credentials.
+
+>Best practice: We recommend that you create individual IAM users for each person who needs to access AWS.
+
+Even if you have multiple employees who require the same level of access, you should create individual IAM users for each of them. This provides additional security by allowing each IAM user to have a unique set of security credentials.
+
+##### The least privelege principle
+
+By default, when you create a new IAM user in AWS, it has no permissions associated with it. To allow the IAM user to perform specific actions in AWS, such as launching an Amazon EC2 instance or creating an Amazon S3 bucket, you must explicitly grant the IAM user the necessary permissions. You give people access only to what they need and nothing else. This idea is called the **least privilege principle**. 
+
+
+#### IAM policies
+
+An IAM policy is a JSON document that allows or denies permissions to AWS services and resources; it describes what API calls a user can or cannot make.
+
+IAM policies enable you to customize users’ levels of access to resources. For example, you can allow users to access all of the Amazon S3 buckets within your AWS account, or only a specific bucket.
+
+>Best practice: Follow the security principle of least privilege when granting permissions. 
+
+By following this principle, you help to prevent users or roles from having more permissions than needed to perform their tasks. 
+For example, if an employee needs access to only a specific bucket, specify the bucket in the IAM policy. Do this instead of granting the employee access to all of the buckets in your AWS account.
+
+##### Example of a IAM policy
+
+Here’s an example of how IAM policies work. Suppose that a coffee shop owner has to create an IAM user for a newly hired cashier. The cashier needs access to the receipts kept in an Amazon S3 bucket with the ID: `AWSDOC-EXAMPLE-BUCKET`.
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": {
+    "Effect": "Allow",
+    "Action": "s3:ListObject",
+    "Resource": "arn:aws:s3:::AWSDOC-EXAMPLE-BUCKET",
+  }
+}
+```
+ 
+This example IAM policy allows permission to access the objects in the Amazon S3 bucket with ID: `AWSDOC-EXAMPLE-BUCKET`.
+
+In this example, the IAM policy is allowing a specific action within Amazon S3: `ListObject`. The policy also mentions a specific bucket ID: `AWSDOC-EXAMPLE-BUCKET`. When the owner attaches this policy to the cashier’s IAM user, it will allow the cashier to view all of the objects in the `AWSDOC-EXAMPLE-BUCKET` bucket. 
+
+If the owner wants the cashier to be able to access other services and perform other actions in AWS, the owner must attach additional policies to specify these services and actions.
+
+Now, suppose that the coffee shop has hired a few more cashiers. Instead of assigning permissions to each individual IAM user, the owner places the users into an IAM **group**.
+
+#### IAM groups
+
+An IAM group is a collection of IAM users. When you assign an IAM policy to a group, all users in the group are granted permissions specified by the policy.
+ 
+Assigning IAM policies at the group level also makes it easier to adjust permissions when an employee transfers to a different job. For example, if a cashier becomes an inventory specialist, the coffee shop owner removes them from the “Cashiers” IAM group and adds them into the “Inventory Specialists” IAM group. This ensures that employees have only the permissions that are required for their current role.
+
+What if a coffee shop employee hasn’t switched jobs permanently, but instead, rotates to different workstations throughout the day? This employee can get the access they need through IAM **roles**.
+
+#### IAM roles
+
+An IAM role is an identity that you can assume to gain **temporary access to permissions**.  
+
+Before an IAM user, application, or service can assume an IAM role, they must be granted permissions to switch to the role. When someone assumes an IAM role, they abandon all previous permissions that they had under a previous role and assume the permissions of the new role. 
+
+>Best practice:IAM roles are ideal for situations in which access to services or resources needs to be granted temporarily, instead of long-term.  
+
+### 6.3 AWS Organizations
+
+It's important to have a separation of duties.
+
+The easiest way to think of Organizations is as a central location to manage multiple AWS accounts. You can manage billing control, access, compliance, security, and share resources across your AWS accounts. 
+
+The main features of Organizations are:
+
+- **Centralized management of all your AWS accounts**. Think of all those AWS accounts, we had: A, B, C, F, G. Now you can combine them into an organization that enables us to manage the accounts centrally.
+- **Consolidated billing** for all member accounts. This means you can use the primary account of your organization to consolidate and pay for all member accounts. Another advantage of consolidated billing is bulk discounts.
+- You can implement **hierarchical groupings of your accounts** to meet security, compliance, or budgetary needs. This means you can group accounts into **organizational units, or OU**s, kind of like business units, or BUs. For example, if you have accounts that must access only the AWS services that meet certain regulatory requirements, you can put those accounts into one OU, or if you have accounts that fall under the developer OU, you can group them accordingly.
+- **Top control over the AWS services and API actions** that each account can access as an administrator of the primary account of an organization. You can use something called **service control policies, or SCP**s, to specify the maximum permissions for member accounts in the organization. In essence, with SCPs you can restrict which AWS services, resources, and individual API actions, the users and roles in each member account can access.
+
+#### Organizational Units (OUs)
+
+In AWS Organizations, you can group accounts into organizational units (OUs) to make it easier to manage accounts with similar business or security requirements. When you apply a policy to an OU, all the accounts in the OU automatically inherit the permissions specified in the policy.  
+
+By organizing separate accounts into OUs, you can more easily isolate workloads or applications that have specific security requirements. For instance, if your company has accounts that can access only the AWS services that meet certain regulatory requirements, you can put these accounts into one OU. Then, you can attach a policy to the OU that blocks access to all other AWS services that do not meet the regulatory requirements.
+
+##### Example of use case for an OU:
+
+Imagine that your company has separate AWS accounts for the finance, information technology (IT), human resources (HR), and legal departments. You decide to consolidate these accounts into a single organization so that you can administer them from a central location. When you create the organization, this establishes the root.
+
+In designing your organization, you consider the business, security, and regulatory needs of each department. You use this information to decide which departments group together in OUs.
+
+The finance and IT departments have requirements that do not overlap with those of any other department. You bring these accounts into your organization to take advantage of benefits such as consolidated billing, but you do not place them into any OUs.
+
+The HR and legal departments need to access the same AWS services and resources, so you place them into an OU together. Placing them into an OU empowers you to attach policies that apply to both the HR and legal departments’ AWS accounts:
+
+![Use of OU](./images/05.png)
+
+### 6.4 Compliance: Artifact and the Customer Compliance Center
+
+For every industry, there are specific standards that need to be upheld, and you will be audited or inspected to ensure that you have met those standards. 
+
+You rely on documentation, records and inspections to pass audits and compliance checks as they come along. 
+
+You'll need to devise a similar way to meet compliance and auditing in AWS. Depending on what types of solutions you host on AWS, you will need to ensure that you are up to compliance for whatever standards and regulations your business is specifically held to. 
+
+AWS has already built out data center infrastructure and networking following industry best practices for security, and as an AWS customer, you inherit all the best practices of AWS policies, architecture, and operational processes. 
+
+AWS complies with a long list of assurance programs that you can find online. This means that segments of your compliance have already been completed, and you can focus on meeting compliance within your own architectures that you build on top of AWS. 
+
+The next thing to know in regards to compliance and AWS, is that the Region you choose to operate out of, might help you meet compliance regulations. If you can only legally store data in the country that the data is from, you can choose a Region that makes sense for you and AWS will not automatically replicate data across Regions. 
+
+You own your data in AWS. As shown in the AWS shared responsibility model, you have complete control over the data that you store in AWS. You can employ multiple different encryption mechanisms to keep your data safe, and that varies from service to service. So, if you need specific standards for data storage, you can devise a way to either reach those requirements by building it yourself on top of AWS or using the features that already exist in many services. 
+
+AWS also offers multiple whitepapers and documents that you can download and use for compliance reports. Since you aren't running the data center yourself, you can essentially request that AWS provides you with documentation proving that they are following best practices for security and compliance. 
+
+#### Customer Compliance Center
+
+The Customer Compliance Center contains resources to help you learn more about AWS compliance. 
+
+In the Customer Compliance Center, you can read customer compliance stories to discover how companies in regulated industries have solved various compliance, governance, and audit challenges.
+
+You can also access compliance whitepapers and documentation on topics such as:
+
+-	AWS answers to key compliance questions
+-	An overview of AWS risk and compliance
+-	An auditing security checklist
+
+Additionally, the Customer Compliance Center includes an auditor learning path. This learning path is designed for individuals in auditing, compliance, and legal roles who want to learn more about how their internal operations can demonstrate compliance using the AWS Cloud.
+
+#### AWS Artifact
+
+Depending on your company’s industry, you may need to uphold specific standards. An audit or inspection will ensure that the company has met those standards.
+
+Artifact provides on-demand access to AWS security and compliance reports and select online agreements. Artifact consists of two main sections: **Artifact Agreements** and  **Artifact Reports**.
+
+##### Artifact Agreements
+
+Suppose that your company needs to sign an agreement with AWS regarding your use of certain types of information throughout AWS services. You can do this through AWS Artifact Agreements. 
+ 
+In Artifact Agreements, you can review, accept, and manage agreements for an individual account and for all your accounts in AWS Organizations. Different types of agreements are offered to address the needs of customers who are subject to specific regulations, such as the Health Insurance Portability and Accountability Act (HIPAA).
+
+##### AWS Artifact Reports
+
+Next, suppose that a member of your company’s development team is building an application and needs more information about their responsibility for complying with certain regulatory standards. You can advise them to access this information in AWS Artifact Reports.
+ 
+AWS Artifact Reports provide compliance reports from third-party auditors. These auditors have tested and verified that AWS is compliant with a variety of global, regional, and industry-specific security standards and regulations. AWS Artifact Reports remains up to date with the latest reports released. You can provide the AWS audit artifacts to your auditors or regulators as evidence of AWS security controls. 
+
+### 6.5 Distributed Denial of Service Attacks (DDoS)
+
+A Distributed Denial of Service (DDoS) attack is a malicious attempt to disrupt the normal functioning of a targeted server, service, or network by overwhelming it with a flood of traffic from multiple sources. This flood of traffic, often generated by a botnet (a network of compromised computers), exhausts the target's resources, such as bandwidth, processing power, or memory, rendering it inaccessible to legitimate users. The goal of a DDoS attack is to disrupt the availability of the targeted system or network, causing service degradation or complete downtime. Various techniques, including amplification attacks and SYN/ACK floods, are employed to amplify the impact of the attack.
+
+These are the main types:
+
+| Name | What it is | How it works | Effect |
+| --- | --- | --- | --- |
+| **UDP Flood** Attacks | UDP (User Datagram Protocol) flood attacks involve overwhelming a target with a large volume of UDP packets. | Attackers send a massive number of UDP packets to the target, aiming to saturate its network bandwidth and resources. | This can lead to network congestion and make it difficult for the target to process legitimate requests. |
+| **HTTP Level** Attacks | HTTP (Hypertext Transfer Protocol) level attacks focus on overwhelming a web server with a flood of HTTP requests. | Attackers generate a high volume of HTTP requests, exhausting the server's capacity to handle legitimate user requests. | This can lead to slowdowns or unresponsiveness of the web server, impacting the ability of users to access the website. |
+| **Slowloris** Attacks | Slowloris is a type of attack that exploits the way web servers handle connections, aiming to keep many connections open simultaneously. | The attacker sends partial HTTP requests, keeping them open by sending additional data at a slow rate, preventing the server from closing the connections. | This gradually ties up the available connections on the server, making it difficult for new users to establish connections and slowing down the website for existing users. |
+
+AWS defense:
+
+- EC2 Security groups: The security groups only allow in proper request traffic.
+- The scale of the entire AWS Regions capacity.
+- The Elastic Load Balancer (ELB): To overwhelm the ELB, you would have to overwhelm the entire AWS region.
+
+For the sharpest, most sophisticated attacks, AWS also offers specialized defense tools called **Shield** with **WAF**.
+
+#### AWS Shield
+
+Shield is a service that protects applications against DDoS attacks. AWS Shield provides two levels of protection: **Standard** and **Advanced**.
+
+- Shield Standard: Shield Standard automatically protects all AWS customers at no cost. It protects your AWS resources from the most common, frequently occurring types of DDoS attacks. As network traffic comes into your applications, AWS Shield Standard uses a variety of analysis techniques to detect malicious traffic in real time and automatically mitigates it. 
+
+- Shield Advanced: AWS Shield Advanced is a paid service that provides detailed attack diagnostics and the ability to detect and mitigate sophisticated DDoS attacks. It also integrates with other services such as Amazon CloudFront, Amazon Route 53, and Elastic Load Balancing. Additionally, you can integrate AWS Shield with WAF by writing custom rules to mitigate complex DDoS attacks.
+
+#### AWS WAF
+
+AWS WAF is a Web Application Firewall that lets you monitor network requests that come into your web applications. 
+
+It has extensive machine learning capabilities, and can recognize new threats as they evolve and proactively help defend your system against an ever-growing list of destructive vectors. 
+
+AWS WAF works together with Amazon CloudFront and an Application Load Balancer. Recall the network access control lists that you learned about in an earlier module. AWS WAF works in a similar way to block or allow traffic. However, it does this by using a web access control list (ACL) to protect your AWS resources. 
+
+### 6.6 Additional security services
+
+##### Encryption at rest vs. encryption in transit 
+
+- By at rest, we mean when the data is idle, just being stored and not moving. For example, server-side encryption at rest is enabled on all DynamoDB table data, which helps prevent unauthorized access. DynamoDB's encryption at rest also integrates with AWS KMS, or Key Management Service, for managing the encryption key that is used to encrypt your tables.
+
+- In-transit means that the data is traveling between points A and B. Where A is the AWS service, and B could be a client accessing the service. Or even another AWS service itself. For example, let's say we have a Redshift instance running. And we want to connect it with a SQL client. We use **secure sockets layer, or SSL** connections to encrypt data, and we can use service certificates to validate, and authorize a client. This means that data is protected when passing between Redshift, and our client. And this functionality exists in numerous other AWS services such as SQS, S3, RDS, and many more. 
+
+#### AWS Key Management Service (KMS)
+
+You must ensure that your applications’ data is secure while in storage (encryption **at rest**) and while it is transmitted, known as encryption **in transit**.
+
+AWS Key Management Service (AWS KMS) enables you to perform encryption operations through the use of **cryptographic keys**. A cryptographic key is a random string of digits used for locking (encrypting) and unlocking (decrypting) data. You can use AWS KMS to create, manage, and use cryptographic keys. You can also control the use of keys across a wide range of services and in your applications.
+
+With AWS KMS, you can choose the specific levels of access control that you need for your keys. For example, you can specify which IAM users and roles are able to manage keys. Alternatively, you can temporarily disable keys so that they are no longer in use by anyone. Your keys never leave AWS KMS, and you are always in control of them.
+
+#### Inspector
+
+Amazon Inspector helps to improve the security and compliance of applications by running **automated security assessments**. It checks applications for security vulnerabilities and deviations from security best practices, such as open access to Amazon EC2 instances and installations of vulnerable software versions. 
+
+#### GuardDuty
+
+Amazon GuardDuty is a service that provides intelligent threat detection for your AWS infrastructure and resources. It identifies threats by continuously monitoring the network activity and account behavior within your AWS environment.
+
+After you have enabled GuardDuty for your AWS account, GuardDuty begins monitoring your network and account activity. You do not have to deploy or manage any additional security software. GuardDuty then continuously analyzes data from multiple AWS sources, including VPC Flow Logs and DNS logs. 
+
+If GuardDuty detects any threats, you can review detailed findings about them from the AWS Management Console. Findings include recommended steps for remediation. You can also configure AWS Lambda functions to take remediation steps automatically in response to GuardDuty’s security findings.
