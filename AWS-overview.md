@@ -1,5 +1,7 @@
 # AWS Overview
 
+<!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
+
 - [Module 1: Introduction to AWS Services](#module-1-introduction-to-aws-services)
    * [1.1 What is AWS](#11-what-is-aws)
    * [1.2 The client-server model](#12-the-client-server-model)
@@ -143,10 +145,18 @@
       + [AWS Key Management Service (KMS)](#aws-key-management-service-kms)
       + [Inspector](#inspector)
       + [GuardDuty](#guardduty)
+- [Module 7: Monitoring and Analysis](#module-7-monitoring-and-analysis)
+   * [7.1 CloudWatch](#71-cloudwatch)
+      + [CloudWatch alarms](#cloudwatch-alarms)
+      + [CloudWatch dashboard](#cloudwatch-dashboard)
+   * [7.2 CloudTrail](#72-cloudtrail)
+      + [CloudTrail Insights](#cloudtrail-insights)
+   * [7.3 Trusted Advisor](#73-trusted-advisor)
+      + [TrustedAdvisor dashboard](#trustedadvisor-dashboard)
 
 <!-- TOC end -->
 
-
+<!-- TOC --><a name="module-1-introduction-to-aws-services"></a>
 ## Module 1: Introduction to AWS Services
 
 1. What is AWS
@@ -155,16 +165,19 @@
 4. Deployment models for cloud computing
 5. Benefits of cloud computing
 
+<!-- TOC --><a name="11-what-is-aws"></a>
 ### 1.1 What is AWS
 
 AWS offers a massive range of services for every business, starting with basic elements, like compute, storage, and network security tools, through complex solutions like blockchain, machine learning, or artificial intelligence, and robot development platforms, all the way through very specialized tool sets, like video production management systems, and orbital satellites you can rent by the minute.
 
 AWS uses a no pre-pay model: you only pay for what you use, when you use it. (_**pay as you go**_ principle)
 
+<!-- TOC --><a name="12-the-client-server-model"></a>
 ### 1.2 The client-server model
 
 In computing, a client can be a web browser or desktop application that a person interacts with to make requests to computer servers. A server can be any service, such as Amazon Elastic Compute Cloud (Amazon **EC2**) – a type of **virtual server**. Here, virtual means that the server is not a real machine, but it is virtually emulated via software within a host machine: a host can house x number of virtual servers EC2.
 
+<!-- TOC --><a name="13-cloud-computing"></a>
 ### 1.3 Cloud computing
 
 Cloud computing is the on-demand availability of computer system resources, especially data storage (cloud storage) and computing power, without direct active management by the user. Large clouds often have functions distributed over multiple locations, each of which is a data center. Cloud computing relies on sharing of resources to achieve coherence and typically uses a pay-as-you-go model, which can help in reducing capital expenses but may also lead to unexpected operating expenses for users.
@@ -177,10 +190,12 @@ The United States National Institute of Standards and Technology's definition of
 - **Rapid elasticity**. Capabilities can be elastically provisioned and released, in some cases automatically, to scale rapidly outward and inward commensurate with demand. To the consumer, the capabilities available for provisioning often appear unlimited and can be appropriated in any quantity at any time.
 - **Measured service**. Cloud systems automatically control and optimize resource use by leveraging a metering capability at some level of abstraction appropriate to the type of service (e.g., storage, processing, bandwidth, and active user accounts). Resource usage can be monitored, controlled, and reported, providing transparency for both the provider and consumer of the utilized service.
 
+<!-- TOC --><a name="14-deployment-models-for-cloud-computing"></a>
 ### 1.4 Deployment models for cloud computing
 
 AWS considers three cloud computing deployment models: purely cloud-based, on-premises, and hybrid:
 
+<!-- TOC --><a name="cloud-based"></a>
 #### Cloud-based** 
 
 - Run all parts of the application in the cloud.
@@ -191,6 +206,7 @@ In a cloud-based deployment model, you can migrate existing applications to the 
 
 For example, a company might create an application consisting of virtual servers, databases, and networking components that are fully based in the cloud.
 
+<!-- TOC --><a name="on-premises"></a>
 #### **On-premises**
 
 >In practice means: using AWS tools to manage privately held (on-premises) resources.
@@ -202,6 +218,7 @@ On-premises deployment is also known as a **private cloud deployment**. In this 
 
 For example, you might have applications that run on technology that is fully kept in your on-premises data center. Though this model is much like legacy IT infrastructure, its incorporation of application management and virtualization technologies helps to increase resource utilization.
 
+<!-- TOC --><a name="hybrid"></a>
 #### **Hybrid**
 
 - Connect cloud-based resources to on-premises infrastructure.
@@ -209,42 +226,50 @@ For example, you might have applications that run on technology that is fully ke
 
 In a hybrid deployment, cloud-based resources are connected to on-premises infrastructure. You might want to use this approach in a number of situations. For example, you have legacy applications that are better maintained on premises, or government regulations require your business to keep certain records on premises.
 
+<!-- TOC --><a name="15-benefits-of-cloud-computing"></a>
 ### 1.5 Benefits of cloud computing
 
+<!-- TOC --><a name="no-upfront-payments"></a>
 #### No upfront payments:
 
 Upfront expense refers to data centers, physical servers, and other resources that you would need to invest in before using them. Variable expense means you only pay for computing resources you consume instead of investing heavily in data centers and servers before you know how you’re going to use them.
 
 By taking a cloud computing approach that offers the benefit of variable expense, companies can implement innovative solutions while saving on costs.
 
+<!-- TOC --><a name="no-maintenance-costs"></a>
 #### No maintenance costs: 
 
 Computing in data centers often requires you to spend more money and time managing infrastructure and servers. 
 
 A benefit of cloud computing is the ability to focus less on these tasks and more on your applications and customers.
 
+<!-- TOC --><a name="no-capacity-predictions"></a>
 #### No capacity predictions
 
 With cloud computing, you don’t have to predict how much infrastructure capacity you will need before deploying an application. 
 
 For example, you can launch Amazon EC2 instances when needed, and pay only for the compute time you use. Instead of paying for unused resources or having to deal with limited capacity, you can access only the capacity that you need. You can also scale in or scale out in response to demand.
 
+<!-- TOC --><a name="open-to-economies-of-sale"></a>
 #### Open to economies of sale: 
 
 By using cloud computing, you can achieve a lower variable cost than you can get on your own.
  
 Because usage from hundreds of thousands of customers can aggregate in the cloud, providers, such as AWS, can achieve higher economies of scale. The economy of scale translates into lower pay-as-you-go prices. 
 
+<!-- TOC --><a name="more-speed-and-agility"></a>
 #### More speed and agility
 
 The flexibility of cloud computing makes it easier for you to develop and deploy applications.
 
 This flexibility provides you with more time to experiment and innovate. When computing in data centers, it may take weeks to obtain new resources that you need. By comparison, cloud computing enables you to access new resources within minutes.
 
+<!-- TOC --><a name="fast-deployment"></a>
 #### Fast deployment
 
 The global footprint of the AWS Cloud enables you to deploy applications to customers around the world quickly, while providing them with low latency. This means that even if you are located in a different part of the world than your customers, customers are able to access your applications with minimal delays. 
 
+<!-- TOC --><a name="module-2-cloud-computing"></a>
 ## Module 2: Cloud computing
 
 1. Elastic Compute Cloud (EC2)
@@ -256,6 +281,7 @@ The global footprint of the AWS Cloud enables you to deploy applications to cust
 7. Simple Notification Service (SNS) and Simple Queue Service (SQS)
 8. Additional AWS compute options
 
+<!-- TOC --><a name="21-elastic-compute-cloud-ec2"></a>
 ### 2.1 Elastic Compute Cloud (EC2)
 
 > **Should have been called**: Amazon Virtual Servers
@@ -274,8 +300,10 @@ You also have the flexibility and control over the configuration of those instan
 
 EC2 instances are also resizable. You might start with a small instance, realize the application you are running is starting to max out that server, and then you can give that instance more memory and more CPU. Which is what we call **vertically scaling** an instance. You can also can **horizontally scale** your EC2 instances by launching new instances and adding them to the pool.
 
+<!-- TOC --><a name="traditional-on-premises-resources-vs-cloud-ec2-instances-and-similar"></a>
 #### Traditional on-premises resources vs. cloud EC2 instances (and similar)
 
+<!-- TOC --><a name="traditional"></a>
 ##### Traditional
 
 With traditional on-premises resources, you have to do the following:
@@ -285,6 +313,7 @@ With traditional on-premises resources, you have to do the following:
 - Install the servers in your physical data center.
 - Make all the necessary configurations.
 
+<!-- TOC --><a name="ec2"></a>
 ##### EC2
 
 By comparison, with an EC2 instance you can use a virtual server to run applications in the AWS Cloud.
@@ -294,6 +323,7 @@ By comparison, with an EC2 instance you can use a virtual server to run applicat
 - You pay only for the compute time you use when an instance is running, not when it is stopped or terminated.
 - You can save costs by paying only for server capacity that you need or want.
 
+<!-- TOC --><a name="basic-use"></a>
 #### Basic Use:
 
 - **Launch**: 
@@ -306,10 +336,12 @@ By comparison, with an EC2 instance you can use a virtual server to run applicat
 
 - **Use**: After you have connected to the instance, you can begin using it. You can run commands to install software, add storage, copy and organize files, and more.
 
+<!-- TOC --><a name="22-ec2-instance-types"></a>
 ### 2.2 EC2 Instance Types
 
 Each instance type is grouped under an instance family and are optimized for certain types of tasks. Instance types offer varying combinations of CPU, memory, storage, and networking capacity, and give you the flexibility to choose the appropriate mix of resources for your applications. The different instance families in EC2 are:
 
+<!-- TOC --><a name="general-purpose-instances"></a>
 #### General purpose instances
 
 They provide a balance of compute, memory, and networking resources. You can use them for a variety of workloads, such as:
@@ -321,12 +353,14 @@ They provide a balance of compute, memory, and networking resources. You can use
 
 Example: an application in which the resource needs for compute, memory, and networking are roughly equivalent. 
 
+<!-- TOC --><a name="compute-optimized-instances"></a>
 #### Compute optimized instances
 
 Compute-optimized applications are ideal for compute-bound applications that benefit from high-performance processors. 
 
 Examples: high-performance web servers, compute-intensive applications servers, dedicated gaming servers, instances for batch processing workloads that require processing many transactions in a single group.
 
+<!-- TOC --><a name="memory-optimized-instances"></a>
 #### Memory optimized instances
 
 > In computing, memory is a temporary storage area. It holds all the data and instructions that a central processing unit (CPU) needs to be able to complete actions. Before a computer program or application is able to run, it is loaded from storage into memory. This preloading process gives the CPU direct access to the computer program.
@@ -335,6 +369,7 @@ Memory optimized instances are designed to deliver fast performance for workload
 
 Example: Suppose that you have a workload that requires large amounts of data to be preloaded before running an application. This scenario might be a high-performance database or a workload that involves performing real-time processing of a large amount of unstructured data. In these types of use cases, consider using a memory optimized instance. Memory optimized instances enable you to run workloads with high memory needs and receive great performance.
 
+<!-- TOC --><a name="accelerated-computing-instances"></a>
 #### Accelerated computing instances
 
 > In computing, a hardware accelerator is a component that can expedite data processing. Accelerated computing instances are ideal for workloads such as graphics applications, game streaming, and application streaming.
@@ -343,6 +378,7 @@ Accelerated computing instances use hardware accelerators, or coprocessors, to p
 
 Examples: floating-point number calculations, graphics processing, and data pattern matching.
 
+<!-- TOC --><a name="storage-optimized-instances"></a>
 #### Storage optimized instances
 
 >In computing, the term input/output operations per second (IOPS) is a metric that measures the performance of a storage device. It indicates how many different input or output operations a device can perform in one second. Storage optimized instances are designed to deliver tens of thousands of low-latency, random IOPS to applications. 
@@ -353,8 +389,10 @@ Storage optimized instances are designed for workloads that require high, sequen
 
 Examples: distributed file systems, data warehousing applications, and high-frequency online transaction processing (OLTP) systems.
 
+<!-- TOC --><a name="23-billing-options-for-ec2"></a>
 ### 2.3 Billing options for EC2
 
+<!-- TOC --><a name="on-demand"></a>
 #### On-Demand
 
 Ideal for short-term, irregular workloads that cannot be interrupted. No upfront costs or minimum contracts apply. The instances run continuously until you stop them, and you pay for only the compute time you use.
@@ -363,6 +401,7 @@ Use cases: developing and testing applications and running applications that hav
 
 On-Demand Instances are not recommended for workloads that last a year or longer because these workloads can experience greater cost savings using Reserved Instances.
 
+<!-- TOC --><a name="reserved-instances"></a>
 #### Reserved Instances
 
 Reserved Instances are a billing discount applied to the use of On-Demand Instances in your account. There are two available types of Reserved Instances:
@@ -372,6 +411,7 @@ Reserved Instances are a billing discount applied to the use of On-Demand Instan
 
 You can purchase Standard Reserved and Convertible Reserved Instances for a 1-year or 3-year term. You realize greater cost savings with the 3-year option. 
 
+<!-- TOC --><a name="standard-reserved-instances"></a>
 ##### Standard Reserved Instances: 
 
 This option is a good fit if you know the EC2 instance type and size you need for your steady-state applications and in which AWS Region you plan to run them. Reserved Instances require you to state the following qualifications:
@@ -382,6 +422,7 @@ This option is a good fit if you know the EC2 instance type and size you need fo
 
 You have the option to specify an Availability Zone for your EC2 Reserved Instances. If you make this specification, you get EC2 capacity reservation. This ensures that your desired amount of EC2 instances will be available when you need them. 
 
+<!-- TOC --><a name="convertible-reserved-instances"></a>
 #### Convertible Reserved Instances: 
 
 If you need to run your EC2 instances in different Availability Zones or different instance types, then Convertible Reserved Instances might be right for you. Note: You trade in a deeper discount when you require flexibility to run your EC2 instances.
@@ -391,6 +432,7 @@ At the end of a Reserved Instance term, you can continue using the Amazon EC2 in
 - **Terminate** the instance.
 - **Purchase a new** Reserved Instance that matches the instance attributes (instance family and size, Region, platform, and tenancy).
 
+<!-- TOC --><a name="ec2-instance-savings-plans"></a>
 #### EC2 Instance Savings Plans
 
 AWS offers Savings Plans for a few compute services, including Amazon EC2. EC2 Instance Savings Plans reduce your EC2 instance costs when you make an hourly spend commitment to an instance family and Region for a 1-year or 3-year term. This term commitment results in savings of up to 72 percent compared to On-Demand rates. Any usage up to the commitment is charged at the discounted Savings Plans rate (for example, $10 per hour). Any usage beyond the commitment is charged at regular On-Demand rates.
@@ -401,6 +443,7 @@ Unlike Reserved Instances, however, you don't need to specify up front what EC2 
 
 If you're considering your options for Savings Plans, you can use AWS Cost Explorer to analyze your Amazon EC2 usage over the past 7, 30, or 60 days. AWS Cost Explorer also provides customized recommendations for Savings Plans. These recommendations estimate how much you could save on your monthly Amazon EC2 costs, based on previous Amazon EC2 usage and the hourly commitment amount in a 1-year or 3-year Savings Plan.
 
+<!-- TOC --><a name="spot-instances"></a>
 #### Spot Instances
 
 These are ideal for workloads with flexible start and end times, or that can withstand interruptions. Spot Instances use unused Amazon EC2 computing capacity and offer you cost savings at up to 90% off of On-Demand prices.
@@ -409,12 +452,14 @@ Use case: Suppose that you have a background processing job that can start and s
 
 After you have launched a Spot Instance, if capacity is no longer available or demand for Spot Instances increases, your instance may be interrupted. This might not pose any issues for your background processing job. However, in the earlier example of developing and testing applications, you would most likely want to avoid unexpected interruptions. Therefore, choose a different EC2 instance type that is ideal for those tasks.
 
+<!-- TOC --><a name="dedicated-hosts"></a>
 #### Dedicated Hosts
 
 Dedicated Hosts are physical servers with Amazon EC2 instance capacity that is fully dedicated to your use. 
 
 You can use your existing per-socket, per-core, or per-VM software licenses to help maintain license compliance. You can purchase On-Demand Dedicated Hosts and Dedicated Hosts Reservations. Of all the Amazon EC2 options that were covered, Dedicated Hosts are the most expensive.
 
+<!-- TOC --><a name="24-ec2-auto-scaling"></a>
 ### 2.4 EC2 Auto Scaling
 
 Scalability involves beginning with only the resources you need and designing your architecture to automatically respond to changing demand by scaling out or in. 
@@ -433,6 +478,7 @@ Within Amazon EC2 Auto Scaling, you can use two approaches: dynamic scaling and 
 
 To scale faster, you can use dynamic scaling and predictive scaling together.
 
+<!-- TOC --><a name="configuration"></a>
 #### Configuration
 
 Auto Scaling configuration has three self-explanatory main parameters:
@@ -441,6 +487,7 @@ Auto Scaling configuration has three self-explanatory main parameters:
 - **Desired capacity**: If you do not specify the desired number of Amazon EC2 instances in an Auto Scaling group, the desired capacity defaults to your minimum capacity.
 - **Maximum capacity**: 
 
+<!-- TOC --><a name="25-elastic-load-balancing-elb"></a>
 ### 2.5 Elastic Load Balancing (ELB)
 
 Elastic Load Balancing is the AWS service that automatically distributes incoming application traffic across multiple resources, such as Amazon EC2 instances. 
@@ -453,6 +500,7 @@ Elastic Load Balancing is a regional construct; it runs at the Region level rath
 
 ELB is automatically scalable. As your traffic grows, ELB is designed to handle the additional throughput with no change to the hourly cost.
 
+<!-- TOC --><a name="26-monolithic-vs-microservices-architectures"></a>
 ### 2.6 Monolithic vs. Microservices Architectures
 
 Applications are made of multiple components. The components communicate with each other to transmit data, fulfill requests, and keep the application running. 
@@ -469,8 +517,10 @@ When designing applications on AWS, you can take a microservices approach with s
 
 Two services facilitate application integration: Amazon Simple Notification Service (Amazon SNS) and Amazon Simple Queue Service (Amazon SQS). These services **decouple** system component while keeping cohesion between them.
 
+<!-- TOC --><a name="27-simple-notification-service-sns-and-simple-queue-service-sqs"></a>
 ### 2.7 Simple Notification Service (SNS) and Simple Queue Service (SQS)
 
+<!-- TOC --><a name="sqs"></a>
 #### SQS
 
 > **Should have been called**: Amazon Queue
@@ -483,6 +533,7 @@ Amazon Simple Queue Service (Amazon SQS) is a message queuing service.
 
 Using Amazon SQS, you can send, store, and receive messages between software components, without losing messages or requiring other services to be available. In Amazon SQS, an application sends messages into a queue. A user or service retrieves a message from the queue, processes it, and then deletes it from the queue.
 
+<!-- TOC --><a name="sns"></a>
 #### SNS
 
 > **Should have been called**: Amazon Messenger
@@ -502,6 +553,7 @@ The routine is:
 - Publish message in that topic
 - All subscribers receive message
 
+<!-- TOC --><a name="28-additional-aws-compute-options"></a>
 ### 2.8 Additional AWS compute options
 
 - AWS Lambda
@@ -513,6 +565,7 @@ EC2 are flexible, reliable and scalable, but they require management. AWS offers
 
 An AWS service for serverless computing is **AWS Lambda**.
 
+<!-- TOC --><a name="aws-lambda"></a>
 #### AWS Lambda
 
 > **Should have been called**: AWS App Scripts
@@ -525,6 +578,7 @@ While using AWS Lambda, you pay only for the compute time that you consume. Char
 For example, a simple Lambda function might involve automatically resizing uploaded images to the AWS Cloud. In this case, the function triggers when uploading a new image. 
 
 
+<!-- TOC --><a name="basic-use-1"></a>
 ##### Basic use:
 
 1. You upload your code to Lambda. 
@@ -542,24 +596,28 @@ For example, a simple Lambda function might involve automatically resizing uploa
 
 ===
 
+<!-- TOC --><a name="elastic-container-service-ecs"></a>
 #### Elastic Container Service (ECS)
 
 ECS is a highly scalable, high-performance container management system that enables you to run and scale containerized applications on AWS. 
 
 ECS supports **Docker** containers. Docker is a software platform that enables you to build, test, and deploy applications quickly. AWS supports the use of open-source Docker Community Edition and subscription-based Docker Enterprise Edition. With Amazon ECS, you can use API calls to launch and stop Docker-enabled applications.
 
+<!-- TOC --><a name="elastic-kubernetes-service-eks"></a>
 #### Elastic Kubernetes Service (EKS)
 
 Elastic Kubernetes Service (EKS) is a fully managed service that you can use to run Kubernetes on AWS.
 
 Kubernetes is open-source software that enables you to deploy and manage containerized applications at scale. A large community of volunteers maintains Kubernetes, and AWS actively works together with the Kubernetes community. As new features and functionalities release for Kubernetes applications, you can easily apply these updates to your applications managed by EKS.
 
+<!-- TOC --><a name="fargate"></a>
 #### Fargate
 
 Fargate is a serverless compute engine for containers. It works with both ECS and EKS; it allows you to run your containers on top of a serverless compute platform.
 
 When using Fargate, you do not need to provision or manage servers. AWS Fargate manages your server infrastructure for you.
 
+<!-- TOC --><a name="module-3-global-infrastructure-and-reliability"></a>
 ## Module 3: Global Infrastructure and Reliability
 
 1. AWS Global Infrastructure: Regions and Availability Zones
@@ -567,8 +625,10 @@ When using Fargate, you do not need to provision or manage servers. AWS Fargate 
 3. Methods for provisioning AWS services
 4. Other AWS managed tools: Elastic Beanstalk and CloudFormation
 
+<!-- TOC --><a name="31-aws-global-infrastructure"></a>
 ### 3.1 AWS Global Infrastructure
 
+<!-- TOC --><a name="regions"></a>
 #### Regions
 
 AWS operates in all sorts of different areas around the world called **Regions**. Each AWS Region is essentially a separate geographic area in the world, and AWS has multiple Regions around the globe; for example, US East (N. Virginia), EU (Ireland), Asia Pacific (Mumbai), and others.
@@ -579,6 +639,7 @@ Each Region can be connected to each other Region through a high speed fiber net
 
 Regional data sovereignty is part of the critical design of AWS Regions. With data being subject to the local laws and statutes of the country where the Region lives.
 
+<!-- TOC --><a name="how-to-choose-a-region"></a>
 ##### How to choose a Region
 
 There are four key factors to consider: Compliance, proximity, feature availability, and pricing:
@@ -591,6 +652,7 @@ There are four key factors to consider: Compliance, proximity, feature availabil
 
 - **Pricing**: The cost of services can vary from Region to Region: for example, Brazil’s tax structure makes that it might cost 50% more to run the same workload out of the São Paulo Region compared to a US-based Region. 
 
+<!-- TOC --><a name="32-availability-zones"></a>
 ### 3.2 Availability Zones
 
 Within each AWS Region, there are multiple data centers called **Availability Zones** (AZs). An Availability Zone is essentially a separate single data center or group of data centers with their own power, cooling, and networking infrastructure. These zones are isolated from each other by tens of miles, and they are designed to provide redundancy and resilience, while keeping single digit millisecond latency between them. AWS customers can deploy their applications and resources across multiple Availability Zones to enhance fault tolerance and high availability (it's a best practice to run at least two AZs within a Region)
@@ -599,6 +661,7 @@ By distributing resources across multiple Availability Zones in a Region, AWS cu
 
 Many of the AWS services run at the Region level, meaning they run synchronously across multiple AZs without any additional effort on your part. 
 
+<!-- TOC --><a name="33-cloudfront-and-edge-locations"></a>
 ### 3.3 CloudFront and edge locations
 
 > **Should have been called**: Amazon CDN
@@ -615,28 +678,34 @@ Edge locations are separate from Regions, so you can push content from inside a 
 
 They also run a domain name service, or DNS, known as **Route 53**, helping direct customers to the correct web locations with reliably low latency.
 
+<!-- TOC --><a name="34-methods-for-provisioning-aws-services"></a>
 ### 3.4 Methods for provisioning AWS services
 
+<!-- TOC --><a name="management-console-browser-based-ui"></a>
 ####  Management Console (browser-based UI)
 
 The AWS Management Console is a web-based interface for accessing and managing AWS services. You can quickly access recently used services and search for other services by name, keyword, or acronym. The console includes wizards and automated workflows that can simplify the process of completing tasks.
 
 You can also use the AWS Console mobile application to perform tasks such as monitoring resources, viewing alarms, and accessing billing information. Multiple identities can stay logged into the AWS Console mobile app at the same time.
 
+<!-- TOC --><a name="aws-command-line-interface"></a>
 #### AWS Command Line Interface
 
 To save time when making API requests, you can use the AWS Command Line Interface (AWS CLI). AWS CLI enables you to control multiple AWS services directly from the command line within one tool. AWS CLI is available for users on Windows, macOS, and Linux. 
 
 By using AWS CLI, you can automate the actions that your services and applications perform through scripts. For example, you can use commands to launch an Amazon EC2 instance, connect an Amazon EC2 instance to a specific Auto Scaling group, and more.
 
+<!-- TOC --><a name="software-development-kits"></a>
 #### Software Development Kits
 
 Another option for accessing and managing AWS services is the software development kits (SDKs). SDKs make it easier for you to use AWS services through an API designed for your programming language or platform. SDKs enable you to use AWS services with your existing applications or create entirely new applications that will run on AWS.
 
 To help you get started with using SDKs, AWS provides documentation and sample code for each supported programming language. Supported programming languages include C++, Java, .NET, and more.
 
+<!-- TOC --><a name="35-other-managed-aws-tools"></a>
 ### 3.5 Other managed AWS tools
 
+<!-- TOC --><a name="elastic-beanstalk"></a>
 #### Elastic Beanstalk
 
 > **Should have been called**: Amazon Platform as a Service
@@ -657,6 +726,7 @@ As a summary: With AWS Elastic Beanstalk, you provide code and configuration set
 - Application health monitoring
 
 
+<!-- TOC --><a name="cloudformation"></a>
 #### CloudFormation
 
 > **Should have been called**: Amazon Services Setup
@@ -669,6 +739,7 @@ CloudFormation supports many different AWS resources from storage, databases, an
 
 With AWS CloudFormation, you can treat your infrastructure as code. This means that you can build an environment by writing lines of code instead of using the AWS Management Console to individually provision resources. AWS CloudFormation provisions your resources in a safe, repeatable manner, enabling you to frequently build your infrastructure and applications without having to perform manual actions. It determines the right operations to perform when managing your stack and rolls back changes automatically if it detects errors.
 
+<!-- TOC --><a name="module-4-networking"></a>
 ## Module 4: Networking
 
 1. AWS Connectivity and Networking
@@ -679,8 +750,10 @@ With AWS CloudFormation, you can treat your infrastructure as code. This means t
 6. ACLs and security Groups
 7. Global Networking: Domain Name System (DNS) and Route 53
 
+<!-- TOC --><a name="41-aws-connectivity-and-networking"></a>
 ### 4.1 AWS Connectivity and Networking
 
+<!-- TOC --><a name="public-vs-private"></a>
 #### Public vs. private
 
 We consider a fundamental distinction:
@@ -690,6 +763,7 @@ We consider a fundamental distinction:
 
 We group resources privately or publicly in subnets, which are ranges of IP addresses in your VPC (Virtual Private Cloud)
 
+<!-- TOC --><a name="42-virtual-private-cloud-vpc"></a>
 ### 4.2 Virtual Private Cloud (VPC)
 
 > **Should have been called**: Amazon Virtual Colocated Rack
@@ -720,20 +794,24 @@ When you create resources in AWS, they are typically launched in a specific VPC.
 
 It's important to note that one VPC might have multiple types of gateways attached for multiple types of resources all residing in the same VPC, just in different subnets. 
 
+<!-- TOC --><a name="43-internet-gateway-and-virtual-private-gateway-vpg"></a>
 ### 4.3 Internet Gateway and Virtual Private Gateway (VPG)
 
+<!-- TOC --><a name="internet-gateway"></a>
 #### Internet Gateway
 
 ![Internet gateway](./images/01.png)
 
 To allow public traffic from the internet to access your VPC, you attach an internet gateway to the VPC. An internet gateway is a connection between a VPC and the internet: without an internet gateway, no one can access the resources within your VPC.
 
+<!-- TOC --><a name="virtual-private-gateway-vpg"></a>
 #### Virtual Private Gateway (VPG)
 
 ![Virtual private gateway](./images/02.png)
 
 A virtual private gateway enables you to establish a virtual private network (VPN) connection between your VPC and a private network, such as an on-premises data center or internal corporate network. A virtual private gateway allows traffic into the VPC only if it is coming from an approved network. It still uses the internet infrastructure (opened to possibilities of jams, infrastructure failures, etc), but with an extra layer of protection (encryption)
 
+<!-- TOC --><a name="44-direct-connect"></a>
 ### 4.4 Direct Connect
 
 > **Should have been called**: Pretty spot on actually
@@ -748,6 +826,7 @@ AWS Direct Connect is a service that lets you to establish a dedicated private c
 
 A corporate data center routes network traffic to an Direct Connect location. That traffic is then routed to a VPC through a virtual private gateway. All network traffic between the corporate data center and VPC flows through this dedicated private connection.
 
+<!-- TOC --><a name="45-subnets-and-network-access-control-lists-acls"></a>
 ### 4.5 Subnets and Network Access Control Lists (ACLs)
 
 A subnet is a section of a VPC in which you can group resources based on security or operational needs. Subnets can be public or private:
@@ -761,8 +840,10 @@ When a customer requests data from an application hosted in the AWS Cloud, this 
 
 The VPC component that checks packet permissions for subnets is a **network access control list (ACL)**.
 
+<!-- TOC --><a name="46-access-control-lists-and-security-groups"></a>
 ### 4.6 Access Control Lists and Security Groups
 
+<!-- TOC --><a name="access-control-lists-acls"></a>
 #### Access Control Lists (ACLs)
 
 A network ACL is a virtual firewall that controls inbound and outbound traffic at _the subnet level_.
@@ -777,6 +858,7 @@ After a packet has entered a subnet, it must have its permissions evaluated for 
 
 The VPC component that checks packet permissions for an Amazon EC2 instance is a security group.
 
+<!-- TOC --><a name="security-groups"></a>
 #### Security Groups
 
 A security group is a virtual firewall that controls inbound and outbound traffic for an Amazon EC2 instance.
@@ -787,12 +869,15 @@ If you have multiple Amazon EC2 instances within the same VPC, you can associate
 
 Security groups perform **stateful packet filtering**. They remember previous decisions made for incoming packets. When a packet response for that request returns to the instance, the security group remembers your previous request. The security group allows the response to proceed, regardless of inbound security group rules.
 
+<!-- TOC --><a name="48-global-networking-domain-name-system-dns-and-route-53"></a>
 ### 4.8 Global Networking: Domain Name System (DNS) and Route 53
 
+<!-- TOC --><a name="domain-name-system"></a>
 #### Domain Name System
 
 The Domain Name System (DNS) is a decentralized naming system that translates human-readable domain names (e.g., `www.example.com`) into numerical IP addresses used by computers to identify each other on a network. DNS serves as a crucial infrastructure of the internet, enabling users to access websites and other online services using easily remembered domain names rather than complex numerical IP addresses.
 
+<!-- TOC --><a name="route-53"></a>
 #### Route 53
 
 > **Should have been called**: Amazon DNS + Domains
@@ -807,6 +892,7 @@ Route 53 gives developers and businesses a reliable way to route end users to in
 
 Route 53 connects user requests to infrastructure running in AWS (such as Amazon EC2 instances and load balancers). It can route users to infrastructure outside of AWS; another feature of Route 53 is the ability to **manage the DNS records for domain names**. You can register new domain names directly in Route 53. You can also transfer DNS records for existing domain names managed by other domain registrars. This enables you to manage all of your domain names within a single location.
 
+<!-- TOC --><a name="module-5"></a>
 ## Module 5
 
 0. Terminology: Block-level vs. object storage models
@@ -820,14 +906,17 @@ Route 53 connects user requests to infrastructure running in AWS (such as Amazon
 8. Database Migration Service (DMS)
 9. Additional database services
 
+<!-- TOC --><a name="50-terminology-block-level-vs-object-storage-models"></a>
 ### 5.0 Terminology: Block-level vs. object storage models.
 
+<!-- TOC --><a name="block-level-storage"></a>
 #### Block-level storage 
 
 This is a type of storage architecture where data is organized and accessed in fixed-sized blocks. Unlike file-level storage, which deals with entire files, block-level storage allows for more granular control over data and is commonly used in storage area networks (SANs). Each block functions as an individual, addressable unit that can be independently managed, making it suitable for tasks such as virtualization, databases, and raw storage for applications requiring direct access to storage blocks.
 
 I practice this means that, hen a file is updated, the whole series of blocks aren't all overwritten. Instead, it updates just the pieces that change. This makes it an efficient storage type when working with applications like databases, enterprise software, or file systems. 
 
+<!-- TOC --><a name="object-storage"></a>
 #### Object storage
 
 In object storage, each object consists of data, metadata, and a key.
@@ -836,10 +925,12 @@ The data might be an image, video, text document, or any other type of file. Met
 
 Recall that when you modify a file in block storage, only the pieces that are changed are updated. When a file in object storage is modified, the entire object is updated.
 
+<!-- TOC --><a name="file-storage"></a>
 #### File storage
 
 In file storage, multiple clients (such as users, applications, servers, and so on) can access data that is stored in shared file folders. In this approach, a storage server uses block storage with a local file system to organize files. Clients access data through file paths.
 
+<!-- TOC --><a name="comparison"></a>
 #### Comparison
 
 - **Object storage** treats any file as a complete, discreet object. This is great for documents, and images, and video files that get uploaded and consumed as entire objects, but every time there's a change to the object, you must re-upload the entire file. There are no **delta updates**. 
@@ -850,16 +941,19 @@ In file storage, multiple clients (such as users, applications, servers, and so 
 
 - Compared to block storage and object storage, **file storage** is ideal for use cases in which a large number of services and resources need to access the same data at the same time.
 
+<!-- TOC --><a name="51-ec2-instance-stores"></a>
 ### 5.1 EC2 Instance Stores
 
 An instance store provides temporary block-level storage for an Amazon EC2 instance. 
 
 An instance store is disk storage that is physically attached to the host computer for an EC2 instance, and therefore has the same lifespan as the instance. When the instance is terminated, you lose any data in the instance store.
 
+<!-- TOC --><a name="when-are-useful"></a>
 #### When are useful:
 
 Because of the ephemeral or temporary nature of instance store volumes, they are useful in situations where you can lose the data being written to the drive. Such as temporary files, scratch data, and data that can be easily recreated without consequence.
 
+<!-- TOC --><a name="52-elastic-block-store-ebs"></a>
 ### 5.2 Elastic Block Store (EBS)
 
 Elastic Block Store (Amazon EBS) is a service that provides block-level storage volumes that you can use with Amazon EC2 instances. They are virtual hard drives; these are separate drives from the local instance store volumes, and they aren't tied directly to the host that you're EC2 is running on: if you stop or terminate an Amazon EC2 instance, all the data on the attached EBS volume remains available.
@@ -868,12 +962,14 @@ To create an EBS volume you define the configuration (such as volume size and ty
 
 They are an Availability Zone-level resource.
 
+<!-- TOC --><a name="when-are-useful-1"></a>
 #### When are useful:
 
 When you need a place to write data that **persists** outside the life cycle of an EC2 instance. 
 
 Because EBS volumes are for data that needs to persist, it’s important to back up the data. You can take incremental backups of EBS volumes by creating **EBS snapshots**.
 
+<!-- TOC --><a name="snapshots"></a>
 #### Snapshots
 
 Incremental backups of EBS volumes with Amazon EBS snapshots. On Day 1, two volumes are backed up. Day 2 adds one new volume and the new volume is backed up. Day 3 adds two more volumes for a total of five volumes. Only the two new volumes are backed up.
@@ -882,6 +978,7 @@ An EBS snapshot is an **incremental backup**. This means that the first backup t
 
 Incremental backups are different from full backups, in which all the data in a storage volume copies each time a backup occurs. _The full backup includes data that has not changed since the most recent backup_.
 
+<!-- TOC --><a name="53-simple-storage-service-s3-ebs-vs-s3"></a>
 ### 5.3 Simple Storage Service (S3). EBS vs. S3
 
 > **Should have been called**: Amazon Unlimited FTP Server
@@ -898,6 +995,7 @@ You can create multiple buckets and store them across different classes or **tie
 
 These tiers offer mechanisms for different storage use cases, such as data that needs to be accessed frequently compared to, audit data that needs to be retained for several years.
 
+<!-- TOC --><a name="s3-tiers"></a>
 #### S3 Tiers
 
 When selecting an Amazon S3 storage class, we have to consider these two factors:
@@ -905,6 +1003,7 @@ When selecting an Amazon S3 storage class, we have to consider these two factors
 - **How often** you plan to retrieve your data
 - **How available** you need your data to be
 
+<!-- TOC --><a name="s3-standard"></a>
 ##### S3 Standard
 
 - Designed for frequently accessed data (high availability for objects)
@@ -914,6 +1013,7 @@ When selecting an Amazon S3 storage class, we have to consider these two factors
 
 S3 Standard has a higher cost than other storage classes intended for infrequently accessed data and archival storage.
 
+<!-- TOC --><a name="s3-standard-infrequent-access-s3-standard-ia"></a>
 ##### S3 Standard-Infrequent Access (S3 Standard-IA)
 
 - Ideal for infrequently accessed data
@@ -922,6 +1022,7 @@ S3 Standard has a higher cost than other storage classes intended for infrequent
 - Used for: ideal for data infrequently accessed but requires high availability when needed. Both S3 Standard and S3 Standard-IA store data in a minimum of three Availability Zones. 
 
 
+<!-- TOC --><a name="s3-one-zone-infrequent-access-s3-one-zone-ia"></a>
 ##### S3 One Zone-Infrequent Access (S3 One Zone-IA)
 
 - Stores data in a single Availability Zone (S3 Standard and S3 Standard-IA store data in a minimum of three Availability Zones)
@@ -931,6 +1032,7 @@ S3 Standard has a higher cost than other storage classes intended for infrequent
     - You want to save costs on storage.
     - You can easily reproduce your data in the event of an Availability Zone failure.
 
+<!-- TOC --><a name="s3-intelligent-tiering"></a>
 ##### S3 Intelligent-Tiering
 
 - Ideal for data with unknown or changing access patterns
@@ -938,29 +1040,34 @@ S3 Standard has a higher cost than other storage classes intended for infrequent
 
 In the S3 Intelligent-Tiering storage class, S3 monitors objects’ access patterns. If you haven’t accessed an object for 30 consecutive days, S3 automatically moves it to the infrequent access tier, S3 Standard-IA. If you access an object in the infrequent access tier, S3 automatically moves it to the frequent access tier, S3 Standard.
 
+<!-- TOC --><a name="the-glacier-tiers"></a>
 ##### The Glacier tiers:
 
 > **Should have been called**: Really slow Amazon S3
 >
 > **Use this to**: Make backups of your backups that you keep on S3. Also, beware the cost of getting data back out in a hurry. For long term archiving.
 
+<!-- TOC --><a name="s3-glacier-instant-retrieval"></a>
 ##### S3 Glacier Instant Retrieval
 
 - Works well for archived data that requires immediate access (same performance as S3 Standard)
 - Can retrieve objects within a few milliseconds
 
+<!-- TOC --><a name="s3-glacier-flexible-retrieval"></a>
 ##### S3 Glacier Flexible Retrieval
 
 - Low-cost storage designed for data archiving
 - Able to retrieve objects within a few minutes to hours
 - Used for: For example, you might use this storage class to store archived customer records or older photos and video files. You can retrieve your data from S3 Glacier Flexible Retrieval from 1 minute to 12 hours.
 
+<!-- TOC --><a name="s3-glacier-deep-archive"></a>
 ##### S3 Glacier Deep Archive
 
 - Lowest-cost object storage class ideal for archiving (long-term retention and digital preservation for data that might be accessed once or twice in a year)
 - Able to retrieve objects within 12 hours (data retrieval from 12 to 48 hours) 
 - All objects from this storage class are replicated and stored across at least three geographically dispersed Availability Zones.
 
+<!-- TOC --><a name="s3-outposts"></a>
 ##### S3 Outposts
 
 - Creates S3 buckets on Amazon S3 Outposts
@@ -969,6 +1076,7 @@ In the S3 Intelligent-Tiering storage class, S3 monitors objects’ access patte
 
 S3 Outposts delivers object storage to your on-premises AWS Outposts environment. S3 Outposts is designed to store data durably and redundantly across multiple devices and servers on your Outposts. 
 
+<!-- TOC --><a name="ebs-vs-s3"></a>
 #### EBS vs. S3
 
 The best choice depends on your individual workload. Each service is the right service for specific needs: 
@@ -978,6 +1086,7 @@ The best choice depends on your individual workload. Each service is the right s
 - If you are using complete objects or only occasional changes, S3 is the best choice. 
 - If you are doing complex read, write, change functions, often, very often, or constantly, then EBS is the best choice. 
 
+<!-- TOC --><a name="54-elastic-file-system-efs-ebs-vs-efs"></a>
 ### 5.4 Elastic File System (EFS). EBS vs. EFS
 
 EFS is a managed file system. It's extremely common for businesses to have shared file systems across their applications.
@@ -986,12 +1095,14 @@ It is a scalable and fully managed file storage service. It is designed to be us
 
 As you add and remove files, Amazon EFS grows and shrinks automatically.
 
+<!-- TOC --><a name="ebs-vs-efs"></a>
 #### EBS vs. EFS
 
 - **EBS**: An Amazon EBS volume stores data in **a single Availability Zone**. To attach an Amazon EC2 instance to an EBS volume, both the Amazon EC2 instance and the EBS volume must reside within the same Availability Zone.
 
 - **EFS**: Amazon EFS is a **regional service**. It stores data in and across multiple Availability Zones. The duplicate storage enables you to access data concurrently from all the Availability Zones in the Region where a file system is located. Additionally, on-premises servers can access EFS using Direct Connect.
 
+<!-- TOC --><a name="55-relational-database-service-rds-aurora"></a>
 ### 5.5 Relational Database Service (RDS). Aurora
 
 In a relational database, data is stored in a way that relates it to other pieces of data. 
@@ -1000,6 +1111,7 @@ An example of a relational database might be the coffee shop’s inventory manag
 
 Relational databases use structured query language (SQL) to store and query data. This approach allows data to be stored in an easily understandable, consistent, and scalable way. 
 
+<!-- TOC --><a name="rds"></a>
 #### RDS
 
 Amazon Relational Database Service (Amazon RDS) is a service that enables you to run relational databases in the AWS Cloud.
@@ -1008,6 +1120,7 @@ Amazon RDS is a managed service that automates tasks such as hardware provisioni
 
 Amazon RDS provides a number of different security options. Many Amazon RDS database engines offer encryption at rest (protecting data while it is stored) and encryption in transit (protecting data while it is being sent and received).
 
+<!-- TOC --><a name="engines"></a>
 ##### Engines
 
 Amazon RDS is available on six database engines, which optimize for memory, performance, or input/output (I/O). Supported database engines include:
@@ -1019,6 +1132,7 @@ Amazon RDS is available on six database engines, which optimize for memory, perf
 - Oracle Database
 - Microsoft SQL Server
 
+<!-- TOC --><a name="aurora"></a>
 #### Aurora
 
 Aurora is an enterprise-class relational database. It is compatible with MySQL and PostgreSQL relational databases. It is up to five times faster than standard MySQL databases and up to three times faster than standard PostgreSQL databases.
@@ -1027,10 +1141,12 @@ Aurora helps to reduce your database costs by reducing unnecessary input/output 
 
 Consider Aurora if your workloads require high availability. It replicates six copies of your data across three Availability Zones and continuously backs up your data to Amazon S3.
 
+<!-- TOC --><a name="56-dynamodb-awss-non-relational-database"></a>
 ### 5.6 DynamoDB: AWS's non-relational database
 
 >Non-relational databases, also known as NoSQL databases, are a type of database management system that diverges from the traditional relational database model. Unlike relational databases, which use a structured and tabular format with predefined schemas, non-relational databases are designed to handle unstructured, semi-structured, or varied data types. They provide a flexible data model, allowing for scalability and efficient management of large volumes of data with diverse structures. Non-relational databases are commonly used in scenarios where the data requirements are dynamic, and the focus is on horizontal scalability and distributed computing, such as in web applications and big data environments.
 
+<!-- TOC --><a name="dynamodb"></a>
 #### DynamoDB
 
 > **Should have been called**: Amazon NoSQL
@@ -1043,17 +1159,20 @@ Amazon DynamoDB is a fully managed NoSQL database service; it is designed to pro
 
 DynamoDB supports key-value and document data models, offering flexible schema options. With automatic and on-demand scaling, DynamoDB can handle large amounts of data and traffic, making it suitable for a variety of use cases, including web and mobile applications, gaming, IoT (Internet of Things), and more. It provides features like encryption, backup and restore, and global tables for deploying applications with high availability and fault tolerance across multiple AWS regions.
 
+<!-- TOC --><a name="some-benefits"></a>
 ##### Some benefits
 
 - It is **serverless**, which means that you do not have to provision, patch, or manage servers You also do not have to install, maintain, or operate software.
 - Automatic Scaling: DynamoDB automatically scales to adjust for changes in capacity while maintaining consistent performance. This makes it a suitable choice for use cases that require high performance while scaling.
 
+<!-- TOC --><a name="relational-vs-non-relational"></a>
 #### Relational vs. non-relational
 
 Relational databases have been around since the moment businesses started using computers. Being able to build complex analysis of data spread across multiple tables, is the strength of any relational system. For example, if you have a sales supply chain management system to analyze for weak spots, using RDS is the clear winner here because: it's built for business analytics, because you need complex relational joins. 
 
 The things that make relational databases great, all of that complex functionality, creates overhead and lag and expense if you're not actually using it. This is where non-relational databases, Dynamo DB, delivers the knockout punch. By eliminating all the overhead, DynamoDB allows you to build powerful, incredibly fast databases where you don't need complex joint functionality. 
 
+<!-- TOC --><a name="57-redshift"></a>
 ### 5.7 Redshift
 
 > **Should have been called**: Amazon Data Warehouse
@@ -1064,6 +1183,7 @@ Amazon Redshift is a fully managed, petabyte-scale data warehouse service. It is
 
 It uses a massively parallel processing (MPP) architecture, enabling quick data retrieval and analysis. With features such as automatic backups, encryption, and integration with various data sources, Amazon Redshift is widely used for data warehousing and analytics in cloud-based environments.
 
+<!-- TOC --><a name="58-database-migration-service-dms"></a>
 #### 5.8 Database Migration Service (DMS)
 
 AWS Database Migration Service (AWS DMS) enables you to migrate relational databases, non-relational databases, and other types of data stores.
@@ -1072,12 +1192,14 @@ With AWS DMS, you move data between a source database and a target database. The
 
 For example, suppose that you have a MySQL database that is stored on premises in an Amazon EC2 instance or in RDS. Consider the MySQL database to be your source database. Using AWS DMS, you could migrate your data to a target database, such as an Amazon Aurora database.
 
+<!-- TOC --><a name="use-cases-for-dms"></a>
 #### Use cases for DMS
 
 - **Development and test database migrations**: Enabling developers to test applications against production data without affecting production users
 - **Database consolidation**: Combining several databases into a single database
 - **Continuous replication**: Sending ongoing copies of your data to other target sources instead of doing a one-time migration
 
+<!-- TOC --><a name="59-additional-database-services"></a>
 #### 5.9 Additional database services
 
 - **DocumentDB**: a document database service that supports MongoDB workloads. (MongoDB is a document database program.)
@@ -1087,6 +1209,7 @@ For example, suppose that you have a MySQL database that is stored on premises i
 - **ElastiCache**:a service that adds caching layers on top of your databases to help improve the read times of common requests. It supports two types of data stores: Redis and Memcached.
 - **DynamoDB Accelerator**:an in-memory cache for DynamoDB. It helps improve response times from single-digit milliseconds to microseconds.
 
+<!-- TOC --><a name="model-6-security"></a>
 ## Model 6: Security
 
 1. The shared-responsibility model
@@ -1096,6 +1219,7 @@ For example, suppose that you have a MySQL database that is stored on premises i
 5. Distributed Denial of Service Attacks (DDoS)
 6. Additional security services
 
+<!-- TOC --><a name="61-the-shared-responsibility-model"></a>
 ### 6.1 The shared-responsibility model
 
 ![Shared responsibility model](./images/04.png)
@@ -1108,12 +1232,14 @@ This collaborative model ensures a comprehensive approach to security, with AWS 
 
 >You can think of this model as being similar to the division of responsibilities between a homeowner and a homebuilder. The builder (AWS) is responsible for constructing your house and ensuring that it is solidly built. As the homeowner (the customer), it is your responsibility to secure everything in the house by ensuring that the doors are closed and locked. 
 
+<!-- TOC --><a name="customers-security-in-the-cloud"></a>
 #### Customers: Security in the cloud
 
 When using AWS services, you, the customer, maintain complete control over your content. You are responsible for managing security requirements for your content, including which content you choose to store on AWS, which AWS services you use, and who has access to that content. You also control how access rights are granted, managed, and revoked.
  
 The security steps that you take will depend on factors such as the services that you use, the complexity of your systems, and your company’s specific operational and security needs. Steps include selecting, configuring, and patching the operating systems that will run on Amazon EC2 instances, configuring security groups, and managing user accounts. 
 
+<!-- TOC --><a name="aws-security-of-the-cloud"></a>
 #### AWS: Security of the cloud
  
 AWS operates, manages, and controls the components at all layers of infrastructure. This includes areas such as the host operating system, the virtualization layer, and even the physical security of the data centers from which services operate. 
@@ -1129,8 +1255,10 @@ AWS manages the security of the cloud, specifically the physical infrastructure 
 
 Although you cannot visit AWS data centers to see this protection firsthand, AWS provides several reports from third-party auditors. These auditors have verified its compliance with a variety of computer security standards and regulations.
 
+<!-- TOC --><a name="62-identity-and-access-management-iam-security-levels"></a>
 ### 6.2 Identity and Access Management (IAM). Security levels
 
+<!-- TOC --><a name="identity-and-access-management-iam"></a>
 #### Identity and Access Management (IAM)
 
 > **Should have been called**: Users, Keys and Certs
@@ -1145,12 +1273,12 @@ IAM gives you the flexibility to configure access based on your company’s spec
 - IAM policies
 - Multi-factor authentication (MFA)
 
-
-
+<!-- TOC --><a name="multi-factor-authentication-mfa"></a>
 ##### Multi-factor authentication (MFA)
 
 Multi-factor authentication (MFA) is a security method that requires users to provide two or more authentication factors to access a system, application, or account. These factors typically include something the user knows (like a password), something the user has (such as a smartphone or security token), and sometimes something the user is (like a fingerprint or facial recognition). MFA enhances security by adding an extra layer of verification
 
+<!-- TOC --><a name="aws-account-root-user-root"></a>
 #### AWS Account root user ('root')
 
 When you first create an AWS account, you begin with an identity known as the **root** user. The root user is accessed by signing in with the email address and password that you used to create your AWS account. It has complete access to all the AWS services and resources in the account: you can spin up databases, EC2 instances, blockchain services, etc. 
@@ -1163,6 +1291,7 @@ You don't want to use the root user for everything: You control access in **a gr
 
 Then, continue to create other IAM users, and access those identities for performing regular tasks throughout AWS. Only use the root user when you need to perform a limited number of tasks that are only available to the root user. Examples of these tasks include changing your root user email address and changing your AWS support plan. For more information, see “Tasks that require root user credentials” in the AWS Account Management Reference Guide.
 
+<!-- TOC --><a name="iam-users"></a>
 #### IAM Users
 
 An IAM user is an identity that you create in AWS. It represents the person or application that interacts with AWS services and resources. It consists of a name and credentials.
@@ -1171,11 +1300,13 @@ An IAM user is an identity that you create in AWS. It represents the person or a
 
 Even if you have multiple employees who require the same level of access, you should create individual IAM users for each of them. This provides additional security by allowing each IAM user to have a unique set of security credentials.
 
+<!-- TOC --><a name="the-least-privelege-principle"></a>
 ##### The least privelege principle
 
 By default, when you create a new IAM user in AWS, it has no permissions associated with it. To allow the IAM user to perform specific actions in AWS, such as launching an Amazon EC2 instance or creating an Amazon S3 bucket, you must explicitly grant the IAM user the necessary permissions. You give people access only to what they need and nothing else. This idea is called the **least privilege principle**. 
 
 
+<!-- TOC --><a name="iam-policies"></a>
 #### IAM policies
 
 An IAM policy is a JSON document that allows or denies permissions to AWS services and resources; it describes what API calls a user can or cannot make.
@@ -1187,6 +1318,7 @@ IAM policies enable you to customize users’ levels of access to resources. For
 By following this principle, you help to prevent users or roles from having more permissions than needed to perform their tasks. 
 For example, if an employee needs access to only a specific bucket, specify the bucket in the IAM policy. Do this instead of granting the employee access to all of the buckets in your AWS account.
 
+<!-- TOC --><a name="example-of-a-iam-policy"></a>
 ##### Example of a IAM policy
 
 Here’s an example of how IAM policies work. Suppose that a coffee shop owner has to create an IAM user for a newly hired cashier. The cashier needs access to the receipts kept in an Amazon S3 bucket with the ID: `AWSDOC-EXAMPLE-BUCKET`.
@@ -1210,6 +1342,7 @@ If the owner wants the cashier to be able to access other services and perform o
 
 Now, suppose that the coffee shop has hired a few more cashiers. Instead of assigning permissions to each individual IAM user, the owner places the users into an IAM **group**.
 
+<!-- TOC --><a name="iam-groups"></a>
 #### IAM groups
 
 An IAM group is a collection of IAM users. When you assign an IAM policy to a group, all users in the group are granted permissions specified by the policy.
@@ -1218,6 +1351,7 @@ Assigning IAM policies at the group level also makes it easier to adjust permiss
 
 What if a coffee shop employee hasn’t switched jobs permanently, but instead, rotates to different workstations throughout the day? This employee can get the access they need through IAM **roles**.
 
+<!-- TOC --><a name="iam-roles"></a>
 #### IAM roles
 
 An IAM role is an identity that you can assume to gain **temporary access to permissions**.  
@@ -1226,6 +1360,7 @@ Before an IAM user, application, or service can assume an IAM role, they must be
 
 >Best practice:IAM roles are ideal for situations in which access to services or resources needs to be granted temporarily, instead of long-term.  
 
+<!-- TOC --><a name="63-aws-organizations"></a>
 ### 6.3 AWS Organizations
 
 It's important to have a separation of duties.
@@ -1239,12 +1374,14 @@ The main features of Organizations are:
 - You can implement **hierarchical groupings of your accounts** to meet security, compliance, or budgetary needs. This means you can group accounts into **organizational units, or OU**s, kind of like business units, or BUs. For example, if you have accounts that must access only the AWS services that meet certain regulatory requirements, you can put those accounts into one OU, or if you have accounts that fall under the developer OU, you can group them accordingly.
 - **Top control over the AWS services and API actions** that each account can access as an administrator of the primary account of an organization. You can use something called **service control policies, or SCP**s, to specify the maximum permissions for member accounts in the organization. In essence, with SCPs you can restrict which AWS services, resources, and individual API actions, the users and roles in each member account can access.
 
+<!-- TOC --><a name="organizational-units-ous"></a>
 #### Organizational Units (OUs)
 
 In AWS Organizations, you can group accounts into organizational units (OUs) to make it easier to manage accounts with similar business or security requirements. When you apply a policy to an OU, all the accounts in the OU automatically inherit the permissions specified in the policy.  
 
 By organizing separate accounts into OUs, you can more easily isolate workloads or applications that have specific security requirements. For instance, if your company has accounts that can access only the AWS services that meet certain regulatory requirements, you can put these accounts into one OU. Then, you can attach a policy to the OU that blocks access to all other AWS services that do not meet the regulatory requirements.
 
+<!-- TOC --><a name="example-of-use-case-for-an-ou"></a>
 ##### Example of use case for an OU:
 
 Imagine that your company has separate AWS accounts for the finance, information technology (IT), human resources (HR), and legal departments. You decide to consolidate these accounts into a single organization so that you can administer them from a central location. When you create the organization, this establishes the root.
@@ -1257,6 +1394,7 @@ The HR and legal departments need to access the same AWS services and resources,
 
 ![Use of OU](./images/05.png)
 
+<!-- TOC --><a name="64-compliance-artifact-and-the-customer-compliance-center"></a>
 ### 6.4 Compliance: Artifact and the Customer Compliance Center
 
 For every industry, there are specific standards that need to be upheld, and you will be audited or inspected to ensure that you have met those standards. 
@@ -1275,6 +1413,7 @@ You own your data in AWS. As shown in the AWS shared responsibility model, you h
 
 AWS also offers multiple whitepapers and documents that you can download and use for compliance reports. Since you aren't running the data center yourself, you can essentially request that AWS provides you with documentation proving that they are following best practices for security and compliance. 
 
+<!-- TOC --><a name="customer-compliance-center"></a>
 #### Customer Compliance Center
 
 The Customer Compliance Center contains resources to help you learn more about AWS compliance. 
@@ -1289,24 +1428,28 @@ You can also access compliance whitepapers and documentation on topics such as:
 
 Additionally, the Customer Compliance Center includes an auditor learning path. This learning path is designed for individuals in auditing, compliance, and legal roles who want to learn more about how their internal operations can demonstrate compliance using the AWS Cloud.
 
+<!-- TOC --><a name="aws-artifact"></a>
 #### AWS Artifact
 
 Depending on your company’s industry, you may need to uphold specific standards. An audit or inspection will ensure that the company has met those standards.
 
 Artifact provides on-demand access to AWS security and compliance reports and select online agreements. Artifact consists of two main sections: **Artifact Agreements** and  **Artifact Reports**.
 
+<!-- TOC --><a name="artifact-agreements"></a>
 ##### Artifact Agreements
 
 Suppose that your company needs to sign an agreement with AWS regarding your use of certain types of information throughout AWS services. You can do this through AWS Artifact Agreements. 
  
 In Artifact Agreements, you can review, accept, and manage agreements for an individual account and for all your accounts in AWS Organizations. Different types of agreements are offered to address the needs of customers who are subject to specific regulations, such as the Health Insurance Portability and Accountability Act (HIPAA).
 
+<!-- TOC --><a name="aws-artifact-reports"></a>
 ##### AWS Artifact Reports
 
 Next, suppose that a member of your company’s development team is building an application and needs more information about their responsibility for complying with certain regulatory standards. You can advise them to access this information in AWS Artifact Reports.
  
 AWS Artifact Reports provide compliance reports from third-party auditors. These auditors have tested and verified that AWS is compliant with a variety of global, regional, and industry-specific security standards and regulations. AWS Artifact Reports remains up to date with the latest reports released. You can provide the AWS audit artifacts to your auditors or regulators as evidence of AWS security controls. 
 
+<!-- TOC --><a name="65-distributed-denial-of-service-attacks-ddos"></a>
 ### 6.5 Distributed Denial of Service Attacks (DDoS)
 
 A Distributed Denial of Service (DDoS) attack is a malicious attempt to disrupt the normal functioning of a targeted server, service, or network by overwhelming it with a flood of traffic from multiple sources. This flood of traffic, often generated by a botnet (a network of compromised computers), exhausts the target's resources, such as bandwidth, processing power, or memory, rendering it inaccessible to legitimate users. The goal of a DDoS attack is to disrupt the availability of the targeted system or network, causing service degradation or complete downtime. Various techniques, including amplification attacks and SYN/ACK floods, are employed to amplify the impact of the attack.
@@ -1327,6 +1470,7 @@ AWS defense:
 
 For the sharpest, most sophisticated attacks, AWS also offers specialized defense tools called **Shield** with **WAF**.
 
+<!-- TOC --><a name="aws-shield"></a>
 #### AWS Shield
 
 Shield is a service that protects applications against DDoS attacks. AWS Shield provides two levels of protection: **Standard** and **Advanced**.
@@ -1335,6 +1479,7 @@ Shield is a service that protects applications against DDoS attacks. AWS Shield 
 
 - Shield Advanced: AWS Shield Advanced is a paid service that provides detailed attack diagnostics and the ability to detect and mitigate sophisticated DDoS attacks. It also integrates with other services such as Amazon CloudFront, Amazon Route 53, and Elastic Load Balancing. Additionally, you can integrate AWS Shield with WAF by writing custom rules to mitigate complex DDoS attacks.
 
+<!-- TOC --><a name="aws-waf"></a>
 #### AWS WAF
 
 AWS WAF is a Web Application Firewall that lets you monitor network requests that come into your web applications. 
@@ -1343,14 +1488,17 @@ It has extensive machine learning capabilities, and can recognize new threats as
 
 AWS WAF works together with Amazon CloudFront and an Application Load Balancer. Recall the network access control lists that you learned about in an earlier module. AWS WAF works in a similar way to block or allow traffic. However, it does this by using a web access control list (ACL) to protect your AWS resources. 
 
+<!-- TOC --><a name="66-additional-security-services"></a>
 ### 6.6 Additional security services
 
+<!-- TOC --><a name="encryption-at-rest-vs-encryption-in-transit"></a>
 ##### Encryption at rest vs. encryption in transit 
 
 - By at rest, we mean when the data is idle, just being stored and not moving. For example, server-side encryption at rest is enabled on all DynamoDB table data, which helps prevent unauthorized access. DynamoDB's encryption at rest also integrates with AWS KMS, or Key Management Service, for managing the encryption key that is used to encrypt your tables.
 
 - In-transit means that the data is traveling between points A and B. Where A is the AWS service, and B could be a client accessing the service. Or even another AWS service itself. For example, let's say we have a Redshift instance running. And we want to connect it with a SQL client. We use **secure sockets layer, or SSL** connections to encrypt data, and we can use service certificates to validate, and authorize a client. This means that data is protected when passing between Redshift, and our client. And this functionality exists in numerous other AWS services such as SQS, S3, RDS, and many more. 
 
+<!-- TOC --><a name="aws-key-management-service-kms"></a>
 #### AWS Key Management Service (KMS)
 
 You must ensure that your applications’ data is secure while in storage (encryption **at rest**) and while it is transmitted, known as encryption **in transit**.
@@ -1359,10 +1507,12 @@ AWS Key Management Service (AWS KMS) enables you to perform encryption operation
 
 With AWS KMS, you can choose the specific levels of access control that you need for your keys. For example, you can specify which IAM users and roles are able to manage keys. Alternatively, you can temporarily disable keys so that they are no longer in use by anyone. Your keys never leave AWS KMS, and you are always in control of them.
 
+<!-- TOC --><a name="inspector"></a>
 #### Inspector
 
 Amazon Inspector helps to improve the security and compliance of applications by running **automated security assessments**. It checks applications for security vulnerabilities and deviations from security best practices, such as open access to Amazon EC2 instances and installations of vulnerable software versions. 
 
+<!-- TOC --><a name="guardduty"></a>
 #### GuardDuty
 
 Amazon GuardDuty is a service that provides intelligent threat detection for your AWS infrastructure and resources. It identifies threats by continuously monitoring the network activity and account behavior within your AWS environment.
@@ -1370,3 +1520,80 @@ Amazon GuardDuty is a service that provides intelligent threat detection for you
 After you have enabled GuardDuty for your AWS account, GuardDuty begins monitoring your network and account activity. You do not have to deploy or manage any additional security software. GuardDuty then continuously analyzes data from multiple AWS sources, including VPC Flow Logs and DNS logs. 
 
 If GuardDuty detects any threats, you can review detailed findings about them from the AWS Management Console. Findings include recommended steps for remediation. You can also configure AWS Lambda functions to take remediation steps automatically in response to GuardDuty’s security findings.
+
+<!-- TOC --><a name="module-7-monitoring-and-analysis"></a>
+## Module 7: Monitoring and Analysis
+
+1. CloudWatch
+2. CloudTrail
+3. Trusted Advisor
+
+<!-- TOC --><a name="71-cloudwatch"></a>
+### 7.1 CloudWatch
+
+> **Should have been called**: Amazon Status Pager
+>
+> **Use this to**: Get alerts about AWS services messing up or disconnecting.
+>
+> **It's like**: PagerDuty, Statuspage
+
+CloudWatch is a web service that enables you to monitor and manage various metrics and configure alarm actions based on data from those metrics.
+
+CloudWatch uses metrics to represent the data points for your resources. AWS services send metrics to CloudWatch. CloudWatch then uses these metrics to create graphs automatically that show how performance has changed over time. 
+
+<!-- TOC --><a name="cloudwatch-alarms"></a>
+#### CloudWatch alarms
+
+With CloudWatch, you can create alarms that automatically perform actions if the value of your metric has gone above or below a predefined threshold. 
+
+For example, suppose that your company’s developers use Amazon EC2 instances for application development or testing purposes. If the developers occasionally forget to stop the instances, the instances will continue to run and incur charges. 
+
+In this scenario, you could create a CloudWatch alarm that automatically stops an Amazon EC2 instance when the CPU utilization percentage has remained below a certain threshold for a specified period. When configuring the alarm, you can specify to receive a notification whenever this alarm is triggered.
+
+<!-- TOC --><a name="cloudwatch-dashboard"></a>
+#### CloudWatch dashboard
+
+The CloudWatch  feature enables you to access all the metrics for your resources from a single location. For example, you can use a CloudWatch dashboard to monitor the CPU utilization of an Amazon EC2 instance, the total number of requests made to an Amazon S3 bucket, and more. You can even customize separate dashboards for different business purposes, applications, or resources.
+
+<!-- TOC --><a name="72-cloudtrail"></a>
+### 7.2 CloudTrail
+
+> **Should have been called**: Amazon Logging
+>
+> **Use this to**: Log who is doing what in your AWS stack (API calls).
+
+CloudTrail records API calls for your account. The recorded information includes the identity of the API caller, the time of the API call, the source IP address of the API caller, and more. You can think of CloudTrail as a “trail” of breadcrumbs (or a log of actions) that someone has left behind them.
+
+Recall that you can use API calls to provision, manage, and configure your AWS resources. With CloudTrail, you can view a complete history of user activity and API calls for your applications and resources. 
+
+Events are typically updated in CloudTrail within 15 minutes after an API call. You can filter events by specifying the time and date that an API call occurred, the user who requested the action, the type of resource that was involved in the API call, and more.
+
+<!-- TOC --><a name="cloudtrail-insights"></a>
+#### CloudTrail Insights
+
+Within CloudTrail, you can also enable CloudTrail Insights. This optional feature allows CloudTrail to automatically detect unusual API activities in your AWS account. 
+
+For example, CloudTrail Insights might detect that a higher number of Amazon EC2 instances than usual have recently launched in your account. You can then review the full event details to determine which actions you need to take next.
+
+<!-- TOC --><a name="73-trusted-advisor"></a>
+### 7.3 Trusted Advisor
+
+> **Should have been called**: Amazon Pennypincher
+>
+> **Use this to**: Find out where you're paying too much in your AWS setup (unused EC2 instances, etc.).
+
+AWS Trusted Advisor is a web service that inspects your AWS environment and provides real-time recommendations in accordance with AWS best practices.
+
+Trusted Advisor compares its findings to AWS best practices in five categories: cost optimization, performance, security, fault tolerance, and service limits. For the checks in each category, Trusted Advisor offers a list of recommended actions and additional resources to learn more about AWS best practices. 
+The guidance provided by AWS Trusted Advisor can benefit your company at all stages of deployment. For example, you can use AWS Trusted Advisor to assist you while you are creating new workflows and developing new applications. You can also use it while you are making ongoing improvements to existing applications and resources.
+
+<!-- TOC --><a name="trustedadvisor-dashboard"></a>
+#### TrustedAdvisor dashboard
+
+When you access the Trusted Advisor dashboard on the AWS Management Console, you can review completed checks for cost optimization, performance, security, fault tolerance, and service limits.
+
+For each category:
+
+•	The green check indicates the number of items for which it detected no problems.
+•	The orange triangle represents the number of recommended investigations.
+•	The red circle represents the number of recommended actions.
