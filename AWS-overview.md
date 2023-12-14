@@ -985,7 +985,7 @@ Incremental backups are different from full backups, in which all the data in a 
 >
 > **Use this to**: Store images and other assets for websites. Keep backups and share files between services. Host static websites. Also, many of the other AWS services write and read from S3.
 
-This service provides object-level storage. S3 stores data as objects in **buckets**.
+This service provides object storage. S3 stores data as objects in **buckets** (_containers_ for objects).
 
 You can upload any type of file to Amazon S3, such as images, videos, text files, and so on. For example, you might use Amazon S3 to store backup files, media files for a website, or archived documents. Amazon S3 offers unlimited storage space. The maximum file size for an object in Amazon S3 is 5 TB.
 
