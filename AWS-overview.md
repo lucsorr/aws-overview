@@ -1018,9 +1018,9 @@ For example, suppose that you have a MySQL database that is stored on premises i
 ## 5. Additional database services
 
 - **DocumentDB**: a document database service that supports MongoDB workloads. (MongoDB is a document database program.)
-- *Neptune*: a graph database service. You can use Amazon Neptune to build and run applications that work with highly connected datasets, such as recommendation engines, fraud detection, and knowledge graphs.
-- *Quantum Ledger Database *(Amazon QLDB):a ledger database service.  You can use Amazon QLDB to review a complete history of all the changes that have been made to your application data.
-- *Managed Blockchain*:a service that you can use to create and manage blockchain networks with open-source frameworks. Blockchain is a distributed ledger system that lets multiple parties run transactions and share data without a central authority.
-- *ElastiCache*:a service that adds caching layers on top of your databases to help improve the read times of common requests. It supports two types of data stores: Redis and Memcached.
-- *DynamoDB Accelerator*:an in-memory cache for DynamoDB. It helps improve response times from single-digit milliseconds to microseconds.
+- **Neptune**: a graph database service. You can use Amazon Neptune to build and run applications that work with highly connected datasets, such as recommendation engines, fraud detection, and knowledge graphs.
+- **Quantum Ledger Database** (Amazon QLDB):a ledger database service.  You can use Amazon QLDB to review a complete history of all the changes that have been made to your application data.
+- **Managed Blockchain**:a service that you can use to create and manage blockchain networks with open-source frameworks. Blockchain is a distributed ledger system that lets multiple parties run transactions and share data without a central authority.
+- **ElastiCache**:a service that adds caching layers on top of your databases to help improve the read times of common requests. It supports two types of data stores: Redis and Memcached.
+- **DynamoDB Accelerator**:an in-memory cache for DynamoDB. It helps improve response times from single-digit milliseconds to microseconds.
 
