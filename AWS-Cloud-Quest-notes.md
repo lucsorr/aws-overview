@@ -1,8 +1,6 @@
 # AWS Cloud Quest Notes
 
-## 1
-
-Policies:
+## Policies:
 
 Sample:
 
@@ -33,3 +31,20 @@ you can grant permissions to S3 resources via bucket policies and user policies
 
 an Amazon Resource Name (ARN) identifies aws resources
 
+## Launching an EC2 instance
+
+![](assets/2023-12-14-21-43-30.png)
+
+![](assets/2023-12-14-21-45-51.png)
+
+![](assets/2023-12-14-21-47-11.png)
+
+![](assets/2023-12-14-21-48-25.png)
+
+![](assets/2023-12-14-21-49-55.png)
+
+![](assets/2023-12-14-21-52-37.png)
+
+![](assets/2023-12-14-21-54-10.png)
+
+![](assets/2023-12-14-21-55-17.png)
