@@ -1,3 +1,5 @@
+# AWS Overview
+
 <!-- TOC start (generated with https://github.com/derlin/bitdowntoc) -->
 
 - [AWS Overview](#aws-overview)
@@ -81,8 +83,6 @@
 <!-- TOC end -->
 
 <!-- TOC --><a name="aws-overview"></a>
-
-# AWS Overview
 
 ## Module 1: Introduction to AWS Services
 
