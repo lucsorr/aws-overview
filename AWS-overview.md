@@ -7,9 +7,9 @@
    * [1.2 The client-server model](#12-the-client-server-model)
    * [1.3 Cloud computing](#13-cloud-computing)
    * [1.4 Deployment models for cloud computing](#14-deployment-models-for-cloud-computing)
-      + [Cloud-based** ](#cloud-based)
-      + [**On-premises**](#on-premises)
-      + [**Hybrid**](#hybrid)
+      + [Cloud-based](#cloud-based)
+      + [On-premises](#on-premises)
+      + [Hybrid](#hybrid)
    * [1.5 Benefits of cloud computing](#15-benefits-of-cloud-computing)
       + [No upfront payments:](#no-upfront-payments)
       + [No maintenance costs: ](#no-maintenance-costs)
@@ -196,7 +196,7 @@ The United States National Institute of Standards and Technology's definition of
 AWS considers three cloud computing deployment models: purely cloud-based, on-premises, and hybrid:
 
 <!-- TOC --><a name="cloud-based"></a>
-#### Cloud-based** 
+#### **Cloud-based** 
 
 - Run all parts of the application in the cloud.
 - Migrate existing applications to the cloud.
