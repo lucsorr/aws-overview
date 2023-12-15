@@ -133,3 +133,63 @@ an Amazon Resource Name (ARN) identifies aws resources
 
 ![](assets/2023-12-15-13-25-17.png)
 
+## Coonecting VPCs
+
+![](assets/2023-12-15-16-23-34.png)
+
+![](assets/2023-12-15-16-25-14.png)
+
+![](assets/2023-12-15-16-25-36.png)
+
+![](assets/2023-12-15-16-26-01.png)
+
+![](assets/2023-12-15-16-26-11.png)
+
+![](assets/2023-12-15-16-26-26.png)
+
+![](assets/2023-12-15-16-26-42.png)
+
+![](assets/2023-12-15-16-26-53.png)
+
+![](assets/2023-12-15-16-27-05.png)
+
+![](assets/2023-12-15-16-27-20.png)
+
+![](assets/2023-12-15-16-27-36.png)
+
+
+![](assets/2023-12-15-16-35-03.png)
+
+(If a EC2 instance has no public IP address, this is because it was created in a private subnet.)
+
+![](assets/2023-12-15-16-39-19.png)
+
+![](assets/2023-12-15-16-39-29.png)
+
+from the EC2 cli, enter `ping <ip>` to check private connection between current and other vpc
+
+![](assets/2023-12-15-16-40-45.png)
+
+![](assets/2023-12-15-16-42-26.png)
+
+You can identify internet gateways by id `igw-xxx...`
+
+![](assets/2023-12-15-16-43-54.png)
+
+![](assets/2023-12-15-16-44-25.png)
+
+![](assets/2023-12-15-16-46-07.png)
+
+![](assets/2023-12-15-16-47-46.png)
+
+![](assets/2023-12-15-16-53-01.png)
+
+![](assets/2023-12-15-16-53-19.png)
+
+![](assets/2023-12-15-16-57-12.png) 
+(they remember who came in, and who came out)
+
+![](assets/2023-12-15-16-58-25.png)
+
+![](assets/2023-12-15-17-04-08.png)
+
