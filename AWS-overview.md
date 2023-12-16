@@ -469,7 +469,7 @@ We consider two types of scalability:
 - **Vertical**: increase or decrease instance capacity - processing power, memory, etc.
 - **Horizontal**: increase or decrease number of instances.
 
-**Amazon EC2 Auto Scaling** enables you to automatically add or remove Amazon EC2 instances in response to changing application demand. By automatically scaling your instances in and out as needed, you can maintain a greater sense of application availability. The EC2 that behave this way belong to an **Auto Scaling group**
+**Amazon EC2 Auto Scaling** enables you to automatically add or remove Amazon EC2 instances in response to changing application demand. By automatically scaling your instances in and out as needed, you can maintain a greater sense of application availability. The EC2 instances that behave this way belong to an **Auto Scaling group**
 
 Within Amazon EC2 Auto Scaling, you can use two approaches: dynamic scaling and predictive scaling.
 
@@ -483,9 +483,10 @@ To scale faster, you can use dynamic scaling and predictive scaling together.
 
 Auto Scaling configuration has three self-explanatory main parameters:
 
-- **Minimum capacity**: This is the minimum number of instances that have to be there in your Autoscaling Group at all times. The autoscaling group always maintains this number and never terminates instances below this number.
-- **Desired capacity**: If you do not specify the desired number of Amazon EC2 instances in an Auto Scaling group, the desired capacity defaults to your minimum capacity.
-- **Maximum capacity**: 
+- **Minimum capacity**: The lowest number of instances that AWS Auto Scaling will maintain in your group. Auto Scaling will not terminate instances below this minimum threshold, ensuring that a minimum level of resources is always available.
+- **Desired capacity**: This represents the ideal number of instances that you want in your Auto Scaling group. Auto Scaling will strive to maintain this desired capacity by dynamically adjusting the number of instances based on changes in demand and other configured metrics.
+- **Maximum capacity**: This is the upper limit on the number of instances that Auto Scaling can launch in response to increased demand.
+Setting a maximum capacity helps prevent Auto Scaling from launching an excessive number of instances, which could lead to unexpected costs.
 
 <!-- TOC --><a name="25-elastic-load-balancing-elb"></a>
 ### 2.5 Elastic Load Balancing (ELB)
@@ -800,14 +801,14 @@ It's important to note that one VPC might have multiple types of gateways attach
 <!-- TOC --><a name="internet-gateway"></a>
 #### Internet Gateway
 
-![Internet gateway](./images/01.png)
+![Internet gateway](./assets/01.png)
 
 To allow public traffic from the internet to access your VPC, you attach an internet gateway to the VPC. An internet gateway is a connection between a VPC and the internet: without an internet gateway, no one can access the resources within your VPC.
 
 <!-- TOC --><a name="virtual-private-gateway-vpg"></a>
 #### Virtual Private Gateway (VPG)
 
-![Virtual private gateway](./images/02.png)
+![Virtual private gateway](./assets/02.png)
 
 A virtual private gateway enables you to establish a virtual private network (VPN) connection between your VPC and a private network, such as an on-premises data center or internal corporate network. A virtual private gateway allows traffic into the VPC only if it is coming from an approved network. It still uses the internet infrastructure (opened to possibilities of jams, infrastructure failures, etc), but with an extra layer of protection (encryption)
 
@@ -820,7 +821,7 @@ A virtual private gateway enables you to establish a virtual private network (VP
 >
 > **It's like**: A toll road turnpike bypassing the crowded side streets.
 
-![Virtual private gateway](./images/03.png)
+![Virtual private gateway](./assets/03.png)
 
 AWS Direct Connect is a service that lets you to establish a dedicated private connection between your data center and a VPC: Direct Connect allows you to establish a completely private, dedicated fiber connection from your data center to AWS. 
 
@@ -1091,9 +1092,11 @@ The best choice depends on your individual workload. Each service is the right s
 
 EFS is a managed file system. It's extremely common for businesses to have shared file systems across their applications.
 
-It is a scalable and fully managed file storage service. It is designed to be used with AWS Cloud services and on-premises resources, providing a simple, scalable file storage solution. Amazon EFS supports the Network File System (NFS) protocol, making it compatible with a wide range of existing applications and tools. It allows multiple Amazon EC2 instances to access a common file system concurrently, making it suitable for scenarios such as content management, web serving, and big data analytics that require shared file storage across multiple instances.
+It is a scalable and fully managed file storage service. It is designed to be used with AWS Cloud services and on-premises resources, providing a simple, scalable file storage solution. Amazon EFS supports the Network File System (NFS) protocol, making it compatible with a wide range of existing applications and tools. It allows _multiple Amazon EC2 instances to access a common file system concurrently, making it suitable for scenarios such as content management, web serving, and big data analytics that require shared file storage across multiple instances_.
 
 As you add and remove files, Amazon EFS grows and shrinks automatically.
+
+EC2 instances access shared data in EFS via **mount targets** in each Availability Zone; applications on each instance view each mounted file system as a local path (i.e.: `/mnt/efs`).
 
 <!-- TOC --><a name="ebs-vs-efs"></a>
 #### EBS vs. EFS
@@ -1222,7 +1225,7 @@ For example, suppose that you have a MySQL database that is stored on premises i
 <!-- TOC --><a name="61-the-shared-responsibility-model"></a>
 ### 6.1 The shared-responsibility model
 
-![Shared responsibility model](./images/04.png)
+![Shared responsibility model](./assets/04.png)
 
 The shared responsibility model in AWS delineates the security responsibilities between the cloud service provider (AWS) and the customer. 
 
@@ -1392,7 +1395,7 @@ The finance and IT departments have requirements that do not overlap with those 
 
 The HR and legal departments need to access the same AWS services and resources, so you place them into an OU together. Placing them into an OU empowers you to attach policies that apply to both the HR and legal departments’ AWS accounts:
 
-![Use of OU](./images/05.png)
+![Use of OU](./assets/05.png)
 
 <!-- TOC --><a name="64-compliance-artifact-and-the-customer-compliance-center"></a>
 ### 6.4 Compliance: Artifact and the Customer Compliance Center
